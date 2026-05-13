@@ -1,0 +1,2580 @@
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Quick Commerce — India's 10-Minute War · Aadhya Gupta</title>
+<meta name="description" content="Full competitive analysis of Blinkit, Zepto, Instamart, Flipkart Minutes & Amazon Now by Aadhya Gupta."/>
+<meta property="og:title" content="Quick Commerce: India's 10-Minute War · Aadhya Gupta"/>
+<meta property="og:description" content="Nine-section competitor analysis of India's quick commerce sector."/>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2VNTCZ6E1R"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-2VNTCZ6E1R');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════
+   ROOT — COLOR PALETTE & TOKENS
+   ═══════════════════════════════════════════ */
+:root {
+  /* Backgrounds */
+  --bg:       #0d0d0f;   /* near-black neutral */
+  --bg2:      #111115;
+  --surface:  #17171c;   /* clean dark card — no red-muddy tint */
+  --surface2: #1c1c22;
+
+  /* Accent — red/war */
+  --a:        #c0392b;
+  --a2:       #e74c3c;
+  --a3:       #7b241c;
+  --a-dim:    rgba(192,57,43,.10);
+
+  /* Gold — section labels, pull quotes */
+  --gold:     #c9a84c;
+  --gold-dim: rgba(201,168,76,.15);
+
+  /* Text */
+  --w:        #f2ede4;   /* warm white */
+  --w2:       #cdbfa8;   /* body copy */
+  --mu:       #7a6a58;   /* muted labels */
+  --mu2:      #4a3c30;
+
+  /* Borders */
+  --br:       rgba(255,255,255,.08);
+  --br2:      rgba(192,57,43,.35);
+
+  /* Brand colors */
+  --blinkit:  #F5C518;
+  --zepto:    #8B5CF6;
+  --instamart:#FF6B00;
+  --fkmin:    #2874F0;
+  --amazonnow:#FF9900;
+
+  /* Typography stacks */
+  --fd: 'Syne', sans-serif;
+  --fb: 'Space Grotesk', sans-serif;
+  --fm: 'JetBrains Mono', monospace;
+
+  /* Radii */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--a3) var(--bg);
+}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--a3); border-radius: 2px; }
+body {
+  font-family: var(--fb);
+  background: var(--bg);
+  color: var(--w);
+  overflow-x: hidden;
+  cursor: none;
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: none; }
+@media (hover: none) {
+  body, button { cursor: auto; }
+  #ccr, #ccd { display: none; }
+}
+
+/* ═══════════════════════════════════════════
+   CUSTOM CURSOR
+   ═══════════════════════════════════════════ */
+#ccr {
+  position: fixed; top: 0; left: 0;
+  width: 26px; height: 26px;
+  border: 1.5px solid var(--a2); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width .2s, height .2s, border-color .2s;
+  will-change: transform;
+}
+#ccd {
+  position: fixed; top: 0; left: 0;
+  width: 5px; height: 5px;
+  background: var(--a2); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+body.hov #ccr { width: 44px; height: 44px; border-color: var(--gold); }
+
+/* ═══════════════════════════════════════════
+   SCROLL PROGRESS BAR
+   ═══════════════════════════════════════════ */
+#sp {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--a3), var(--a2), var(--gold));
+  z-index: 999; pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION — matches PDF exactly
+   numbered links, back to portfolio
+   ═══════════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; inset-x: 0; z-index: 40;
+  height: 52px;
+  display: flex; align-items: center;
+  padding: 0 2rem; gap: 1.5rem;
+  border-bottom: 1px solid var(--br);
+  backdrop-filter: blur(24px);
+  background: rgba(12,4,0,.90);
+}
+/* Brand name on far left */
+.nav-brand {
+  font-family: var(--fd);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: var(--w);
+  white-space: nowrap;
+}
+/* Numbered section links — center */
+.nav-links {
+  display: flex; align-items: center; gap: .15rem;
+  flex: 1; justify-content: center; flex-wrap: wrap;
+}
+.nav-links a {
+  font-family: var(--fm);
+  font-size: .54rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--mu);
+  padding: .25rem .4rem;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.nav-links a .nav-num {
+  color: var(--a2);
+  margin-right: .15rem;
+  font-size: .5rem;
+}
+.nav-links a:hover, .nav-links a.act { color: var(--w); }
+.nav-links a.act .nav-num { color: var(--gold); }
+/* Portfolio link — far right */
+.nav-portfolio {
+  font-family: var(--fm);
+  font-size: .56rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mu);
+  border: 1px solid var(--br);
+  padding: .3rem .8rem;
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  transition: color .2s, border-color .2s;
+}
+.nav-portfolio:hover { color: var(--a2); border-color: var(--a2); }
+/* Mobile hamburger */
+.ham {
+  display: none; flex-direction: column; gap: 4px;
+  margin-left: auto; cursor: pointer;
+}
+.ham span { width: 20px; height: 1.5px; background: var(--w2); }
+/* Mobile menu overlay */
+#mn {
+  display: none; position: fixed; inset: 0;
+  background: rgba(12,4,0,.97); z-index: 50;
+  flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+}
+#mn a { font-family: var(--fd); font-size: 1.6rem; font-weight: 700; color: var(--w2); }
+#mn a:hover { color: var(--a2); }
+#mc { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.4rem; color: var(--mu); cursor: pointer; }
+
+/* ═══════════════════════════════════════════
+   BACK TO TOP
+   ═══════════════════════════════════════════ */
+#btt {
+  position: fixed; right: 1.5rem; bottom: 1.5rem;
+  width: 38px; height: 38px;
+  background: var(--surface); border: 1px solid var(--br); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; transform: translateY(8px);
+  transition: all .25s; z-index: 60; color: var(--a2); font-size: .9rem;
+}
+#btt.show { opacity: 1; transform: none; }
+#btt:hover { background: var(--a); border-color: var(--a); color: #fff; }
+
+/* ═══════════════════════════════════════════
+   SECTION DIVIDER — matches PDF "SECTION 01" label
+   ═══════════════════════════════════════════ */
+.sec-divider {
+  display: flex; align-items: center; gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.sec-divider::before, .sec-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--br), transparent);
+}
+.sec-num-label {
+  font-family: var(--fm);
+  font-size: .52rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--mu2);
+}
+
+/* ═══════════════════════════════════════════
+   SECTION NUMBER (01, 02 …) — left of heading
+   ═══════════════════════════════════════════ */
+.sec-index {
+  font-family: var(--fm);
+  font-size: .6rem;
+  letter-spacing: .12em;
+  color: var(--a2);
+  margin-bottom: .5rem;
+}
+
+/* ═══════════════════════════════════════════
+   HERO — matches PDF layout precisely
+   ═══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 10% 5rem;
+  position: relative; overflow: hidden;
+}
+/* Radial red glow */
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 55% at 50% 40%, rgba(192,57,43,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+/* Grid pattern overlay */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(192,57,43,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192,57,43,.04) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black, transparent);
+  pointer-events: none;
+}
+/* Red top border line */
+.hero-topline {
+  position: absolute; top: 52px; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, var(--a3), var(--a2), transparent);
+}
+/* Eyebrow kicker */
+.hero-kicker {
+  font-family: var(--fm);
+  font-size: .6rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--a2);
+  margin-bottom: 1.4rem;
+}
+/* Main h1 — large serif, matches PDF */
+.hero-h1 {
+  font-family: var(--fd);
+  font-size: clamp(36px, 6.5vw, 82px);
+  font-weight: 800;
+  line-height: .92;
+  letter-spacing: -.035em;
+  margin-bottom: .8rem;
+  color: var(--w);
+}
+/* Subtitle italic — gold */
+.hero-sub {
+  font-family: var(--fd);
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: .9rem;
+}
+/* Byline */
+.hero-byline {
+  font-family: var(--fm);
+  font-size: .6rem;
+  letter-spacing: .12em;
+  color: var(--mu);
+  margin-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.hero-byline span { color: var(--a2); }
+/* Horizontal rule under byline */
+.hero-rule {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, var(--a), transparent);
+  margin-bottom: 3.5rem;
+}
+
+/* ═══════════════════════════════════════════
+   BODY WRAPPER
+   ═══════════════════════════════════════════ */
+.wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 2rem 8rem;
+}
+
+/* ═══════════════════════════════════════════
+   CONTENT SECTION
+   ═══════════════════════════════════════════ */
+.cs {
+  padding: 5rem 0;
+  border-top: 1px solid var(--br);
+}
+.cs:first-child { border-top: none; }
+section[id] { scroll-margin-top: 60px; }
+
+/* Section heading kicker */
+.ck {
+  font-family: var(--fm);
+  font-size: .56rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--a2);
+  margin-bottom: .75rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.ck::before { content: ''; width: 20px; height: 1px; background: var(--a2); }
+
+/* Section H2 */
+.ch {
+  font-family: var(--fd);
+  font-size: clamp(28px, 4.5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+.ch em { color: var(--a2); font-style: italic; }
+
+/* Body paragraph */
+.bp {
+  font-size: .91rem;
+  color: var(--w2);
+  line-height: 1.82;
+  margin-bottom: 1.1rem;
+}
+.bp b { color: var(--w); font-weight: 600; }
+.bp em { color: var(--gold); font-style: normal; }
+
+/* Pull quote — left red border */
+.pull {
+  border-left: 3px solid var(--a2);
+  padding: .6rem 0 .6rem 1.4rem;
+  margin: 1.8rem 0;
+}
+.pull p {
+  font-family: var(--fd);
+  font-size: clamp(14px, 2.2vw, 19px);
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.5;
+}
+
+/* Code-style callout box */
+.code-box {
+  background: var(--surface2);
+  border: 1px solid var(--br);
+  border-radius: var(--r-md);
+  padding: 1rem 1.4rem;
+  margin: 1.4rem 0;
+  font-family: var(--fm);
+  font-size: .78rem;
+  color: var(--w2);
+  line-height: 1.75;
+}
+
+/* ═══════════════════════════════════════════
+   STAT BOXES — PDF "Setting the Stage" row
+   ═══════════════════════════════════════════ */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .6rem;
+  margin: 1.5rem 0;
+}
+@media (max-width: 640px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
+.stat-box {
+  background: var(--surface);
+  border: 1px solid var(--br);
+  border-radius: var(--r-md);
+  padding: .9rem 1rem;
+  overflow: hidden;
+}
+.stat-box-val {
+  font-family: var(--fm);
+  font-size: clamp(12px, 1.8vw, 18px);
+  font-weight: 700;
+  color: var(--a2);
+  line-height: 1.1;
+  margin-bottom: .25rem;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.stat-box-lbl {
+  font-family: var(--fm);
+  font-size: .52rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mu);
+  line-height: 1.3;
+}
+
+/* ═══════════════════════════════════════════
+   BIG METRIC ROW — red numbers
+   ═══════════════════════════════════════════ */
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 1.8rem 0;
+}
+@media (max-width: 640px) { .metric-row { grid-template-columns: repeat(2, 1fr); } }
+.metric-val {
+  font-family: var(--fm);
+  font-size: clamp(18px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--a2);
+  line-height: 1;
+  margin-bottom: .3rem;
+  word-break: break-word;
+}
+.metric-lbl {
+  font-family: var(--fm);
+  font-size: .52rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mu);
+}
+
+/* ═══════════════════════════════════════════
+   AOV BAR CHART — matches PDF bar chart
+   ═══════════════════════════════════════════ */
+.chart-box {
+  background: var(--surface);
+  border: 1px solid var(--br);
+  border-radius: var(--r-lg);
+  padding: 1.2rem 1.4rem;
+  margin: 1.4rem 0;
+}
+.chart-title {
+  font-family: var(--fm);
+  font-size: .52rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mu);
+  margin-bottom: 1rem;
+}
+.bar-row {
+  display: flex; align-items: center; gap: .75rem;
+  margin-bottom: .55rem;
+  padding: .3rem .4rem;
+  border-radius: var(--r-sm);
+  transition: background .18s;
+  cursor: default;
+}
+.bar-row:hover { background: rgba(231,76,60,.06); }
+.bar-row:hover .bar-fill { filter: brightness(1.25); }
+.bar-row:hover .bar-val { color: var(--w); }
+.bar-row:hover .bar-label { color: var(--w); }
+.bar-label {
+  font-family: var(--fm);
+  font-size: .6rem;
+  color: var(--w2);
+  width: 80px;
+  flex-shrink: 0;
+  transition: color .18s;
+}
+.bar-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(255,255,255,.04);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: var(--a2);
+  border-radius: 2px;
+  transition: width 1s ease, filter .18s;
+  width: 0;
+}
+.bar-val {
+  font-family: var(--fm);
+  font-size: .58rem;
+  color: var(--a2);
+  width: 46px;
+  text-align: right;
+  flex-shrink: 0;
+  transition: color .18s;
+}
+
+/* ═══════════════════════════════════════════
+   REVENUE BAR CHART
+   ═══════════════════════════════════════════ */
+.rev-row {
+  display: flex; align-items: center; gap: .75rem;
+  margin-bottom: .65rem;
+  padding: .3rem .4rem;
+  border-radius: var(--r-sm);
+  transition: background .18s;
+  cursor: default;
+}
+.rev-row:hover { background: rgba(231,76,60,.06); }
+.rev-row:hover .rev-bar { filter: brightness(1.3); }
+.rev-row:hover .rev-val { color: var(--w); }
+.rev-row:hover .rev-label { color: var(--w); }
+.rev-label {
+  font-family: var(--fm);
+  font-size: .58rem;
+  color: var(--w2);
+  width: 130px;
+  flex-shrink: 0;
+  line-height: 1.3;
+  transition: color .18s;
+}
+.rev-bar {
+  height: 10px;
+  background: var(--a2);
+  border-radius: 2px;
+  transition: filter .18s;
+}
+.rev-val {
+  font-family: var(--fm);
+  font-size: .58rem;
+  color: var(--a2);
+  white-space: nowrap;
+  margin-left: .5rem;
+  transition: color .18s;
+}
+
+/* ═══════════════════════════════════════════
+   POSITIONING MAP — 2×2 quadrant
+   ═══════════════════════════════════════════ */
+.map-wrap {
+  background: var(--surface);
+  border: 1px solid var(--br);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  position: relative;
+}
+.map-canvas {
+  width: 100%;
+  aspect-ratio: 1.3 / 1;
+  position: relative;
+  border: 1px solid rgba(255,255,255,.06);
+}
+/* Quadrant lines */
+.map-canvas::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0; right: 0; height: 1px;
+  background: rgba(255,255,255,.08);
+}
+.map-canvas::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 1px;
+  background: rgba(255,255,255,.08);
+}
+.map-label {
+  font-family: var(--fm);
+  font-size: .48rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mu);
+  position: absolute;
+}
+.map-label.tl { top: .4rem; left: .5rem; }
+.map-label.tr { top: .4rem; right: .5rem; text-align: right; }
+.map-label.bl { bottom: .4rem; left: .5rem; }
+.map-label.br { bottom: .4rem; right: .5rem; text-align: right; }
+.map-label.axis-y {
+  left: -1.8rem; top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  white-space: nowrap;
+}
+.map-label.axis-x {
+  bottom: -1.4rem; left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+/* Brand dot on map */
+.map-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center; gap: .3rem;
+  cursor: default;
+  transition: transform .2s;
+}
+.map-dot:hover { transform: translate(-50%, -50%) scale(1.25); z-index: 2; }
+.map-dot:hover .map-dot-name { color: var(--w); }
+.map-dot:hover .map-dot-circle { box-shadow: 0 0 16px currentColor; }
+.map-dot-circle {
+  width: 12px; height: 12px; border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+.map-dot-name {
+  font-family: var(--fm);
+  font-size: .5rem;
+  letter-spacing: .08em;
+  white-space: nowrap;
+  color: var(--w2);
+}
+
+/* ═══════════════════════════════════════════
+   MARKET SHARE DONUT — SVG-based
+   ═══════════════════════════════════════════ */
+.donut-wrap {
+  background: var(--surface);
+  border: 1px solid var(--br);
+  border-radius: var(--r-lg);
+  padding: 1.4rem;
+  margin: 1.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.donut-svg-wrap { flex-shrink: 0; }
+.donut-legend { flex: 1; min-width: 140px; }
+.donut-title {
+  font-family: var(--fm);
+  font-size: .52rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mu);
+  margin-bottom: 1rem;
+}
+.legend-row {
+  display: flex; align-items: center; gap: .6rem;
+  margin-bottom: .5rem;
+  padding: .35rem .5rem;
+  border-radius: var(--r-sm);
+  transition: background .18s;
+  cursor: default;
+}
+.legend-row:hover { background: rgba(255,255,255,.04); }
+.legend-row:hover .legend-name { color: var(--w); }
+.legend-row:hover .legend-pct { color: var(--w); }
+.legend-dot {
+  width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+}
+.legend-name {
+  font-family: var(--fm);
+  font-size: .6rem;
+  color: var(--w2);
+  flex: 1;
+  transition: color .18s;
+}
+.legend-pct {
+  font-family: var(--fm);
+  font-size: .6rem;
+  color: var(--a2);
+  font-weight: 600;
+  transition: color .18s;
+}
+
+/* ═══════════════════════════════════════════
+   BRAND CARD — deep dive cards
+   ═══════════════════════════════════════════ */
+.bc {
+  background: var(--surface);
+  border: 1px solid var(--br);
+  border-radius: var(--r-xl);
+  padding: 1.8rem;
+  margin-bottom: 1.8rem;
+  position: relative;
+  overflow: hidden;
+}
+.bc-header {
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+/* Brand letter avatar */
+.bc-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fd); font-size: 1.3rem; font-weight: 800;
+  color: #000; flex-shrink: 0;
+}
+.bc-header-text { flex: 1; }
+.bc-name {
+  font-family: var(--fd);
+  font-size: clamp(22px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1;
+  margin-bottom: .2rem;
+}
+.bc-meta {
+  font-family: var(--fm);
+  font-size: .57rem;
+  letter-spacing: .08em;
+  color: var(--mu);
+  margin-bottom: .6rem;
+}
+/* Badge tags */
+.bc-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+.bc-tag {
+  font-family: var(--fm);
+  font-size: .52rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .2rem .6rem;
+  border-radius: 100px;
+  border: 1px solid var(--br);
+  color: var(--mu);
+}
+/* Stats grid */
+.bc-stats {
+  display: flex; flex-wrap: wrap; gap: .75rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--br);
+  border-bottom: 1px solid var(--br);
+  margin-bottom: 1.2rem;
+}
+.stat-item { min-width: 90px; }
+.stat-num {
+  font-family: var(--fm);
+  font-size: clamp(14px, 2.2vw, 22px);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: .2rem;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.stat-lbl {
+  font-family: var(--fm);
+  font-size: .5rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mu);
+}
+/* Body */
+.bc-body { font-size: .83rem; color: var(--w2); line-height: 1.8; }
+.bc-body p { margin-bottom: .8rem; }
+/* Sub-section label */
+.bc-sub {
+  font-family: var(--fm);
+  font-size: .52rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--a2);
+  margin: 1rem 0 .5rem;
+}
+/* Bullet list */
+.bc-list { list-style: none; padding: 0; }
+.bc-list li {
+  font-size: .8rem;
+  color: var(--w2);
+  padding: .32rem 0 .32rem 1.1rem;
+  position: relative;
+  border-bottom: 1px solid rgba(192,57,43,.06);
+  line-height: 1.5;
+}
+.bc-list li::before {
+  content: '→';
+  position: absolute; left: 0;
+  color: var(--a3); font-size: .7rem;
+}
+.bc-list li:last-child { border-bottom: none; }
+
+/* Two-column strengths/weaknesses */
+.bc-sw {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: .6rem;
+}
+@media (max-width: 580px) { .bc-sw { grid-template-columns: 1fr; } }
+.bc-sw-head {
+  font-family: var(--fm);
+  font-size: .5rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+}
+
+/* User reactions two-col */
+.reactions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+@media (max-width: 580px) { .reactions { grid-template-columns: 1fr; } }
+.reactions-col-head {
+  font-family: var(--fm);
+  font-size: .5rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+.reactions-col-head.pos { color: #2ecc71; }
+.reactions-col-head.neg { color: var(--a2); }
+.reaction-item {
+  font-size: .76rem;
+  color: var(--w2);
+  padding: .4rem .7rem;
+  border-left: 2px solid;
+  margin-bottom: .4rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+.reaction-item.pos { border-color: rgba(46,204,113,.4); }
+.reaction-item.neg { border-color: rgba(231,76,60,.4); }
+
+/* Personal observation */
+.obs-box {
+  background: rgba(192,57,43,.05);
+  border: 1px solid var(--br);
+  border-left: 3px solid var(--a2);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+}
+.obs-label {
+  font-family: var(--fm);
+  font-size: .48rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--a2);
+  margin-bottom: .5rem;
+  display: flex; align-items: center; gap: .4rem;
+}
+.obs-label::before { content: '●'; font-size: .35rem; }
+.obs-box p { font-size: .8rem; color: var(--w2); line-height: 1.7; margin-bottom: .4rem; }
+.obs-box p:last-child { margin-bottom: 0; }
+
+/* Gap box */
+.gap-box {
+  background: rgba(201,168,76,.05);
+  border: 1px solid rgba(201,168,76,.2);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: 1rem 1.2rem;
+  margin-top: 1.2rem;
+}
+.gap-label {
+  font-family: var(--fm);
+  font-size: .5rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .5rem;
+}
+.gap-box p {
+  font-size: .8rem;
+  color: var(--w2);
+  line-height: 1.72;
+  font-style: italic;
+  margin-bottom: .5rem;
+}
+.gap-box p:last-child { margin-bottom: 0; }
+
+/* Top strengths/weaknesses pills at card bottom */
+.sw-footer {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  margin-top: 1.2rem; padding-top: 1rem;
+  border-top: 1px solid var(--br);
+}
+@media (max-width: 580px) { .sw-footer { grid-template-columns: 1fr; } }
+.sw-footer-head {
+  font-family: var(--fm);
+  font-size: .5rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mu);
+  margin-bottom: .5rem;
+}
+.sw-pill {
+  font-size: .74rem;
+  color: var(--w2);
+  padding: .4rem .75rem;
+  border-radius: var(--r-sm);
+  margin-bottom: .35rem;
+  line-height: 1.4;
+}
+.sw-pill.str { background: rgba(46,204,113,.08); border: 1px solid rgba(46,204,113,.2); }
+.sw-pill.wk  { background: rgba(231,76,60,.06); border: 1px solid rgba(231,76,60,.2); }
+
+/* ═══════════════════════════════════════════
+   TURNING POINTS — timeline with dots
+   ═══════════════════════════════════════════ */
+.tp-item {
+  background: var(--surface);
+  border: 1px solid var(--br);
+  border-left: 3px solid var(--a2);
+  border-radius: 0 var(--r-xl) var(--r-xl) 0;
+  padding: 1.6rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+/* Timeline dot on left edge */
+.tp-dot {
+  position: absolute;
+  left: -8px; top: 1.8rem;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+}
+.tp-brand-tag {
+  font-family: var(--fm);
+  font-size: .5rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: .18rem .55rem;
+  border-radius: 100px;
+  border: 1px solid;
+  display: inline-flex; align-items: center;
+  margin-bottom: .6rem;
+  margin-right: .5rem;
+}
+.tp-date {
+  font-family: var(--fm);
+  font-size: .52rem;
+  letter-spacing: .1em;
+  color: var(--mu);
+  margin-bottom: .6rem;
+  display: inline;
+}
+.tp-title {
+  font-family: var(--fd);
+  font-size: clamp(16px, 2.5vw, 24px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--w);
+}
+.tp-section-lbl {
+  font-family: var(--fm);
+  font-size: .5rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin: .75rem 0 .3rem;
+}
+.tp-section-lbl.what  { color: var(--a2); }
+.tp-section-lbl.why   { color: var(--gold); }
+.tp-section-lbl.lesson { color: #2ecc71; }
+.tp-body {
+  font-size: .81rem;
+  color: var(--w2);
+  line-height: 1.8;
+  margin-bottom: .4rem;
+}
+
+/* ═══════════════════════════════════════════
+   WAR MAP — comparison table + charts
+   ═══════════════════════════════════════════ */
+.tw {
+  overflow-x: auto;
+  border: 1px solid var(--br);
+  border-radius: var(--r-lg);
+  margin: 1.2rem 0;
+}
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: .76rem; min-width: 520px;
+}
+th {
+  font-family: var(--fm);
+  font-size: .5rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(192,57,43,.07);
+  padding: .7rem 1rem;
+  text-align: left;
+}
+td {
+  padding: .65rem 1rem;
+  border-top: 1px solid var(--br);
+  color: var(--w2);
+  line-height: 1.4;
+}
+tr:hover td { background: rgba(192,57,43,.03); }
+
+/* War row cards */
+.war-row {
+  background: var(--surface);
+  border: 1px solid var(--br);
+  border-radius: var(--r-lg);
+  padding: 1rem 1.25rem;
+  margin-bottom: .6rem;
+  display: grid;
+  grid-template-columns: 130px 1fr 1fr;
+  gap: 1rem; align-items: start;
+}
+@media (max-width: 580px) { .war-row { grid-template-columns: 1fr; } }
+.war-brand { font-family: var(--fd); font-size: 1rem; font-weight: 700; }
+.war-str { font-size: .74rem; color: #2ecc71; line-height: 1.55; }
+.war-wk  { font-size: .74rem; color: var(--a2); line-height: 1.55; }
+.war-str li, .war-wk li {
+  list-style: none; padding-left: .9rem; position: relative; margin-bottom: .2rem;
+}
+.war-str li::before { content: '+'; position: absolute; left: 0; font-weight: 700; }
+.war-wk  li::before { content: '−'; position: absolute; left: 0; }
+
+/* ═══════════════════════════════════════════
+   INSIGHT CARDS
+   ═══════════════════════════════════════════ */
+.ic {
+  background: var(--surface2);
+  border: 1px solid var(--br);
+  border-radius: var(--r-xl);
+  padding: 1.6rem;
+  margin-bottom: 1.1rem;
+  position: relative;
+  overflow: hidden;
+}
+.ic-num {
+  position: absolute; top: .6rem; right: 1rem;
+  font-family: var(--fd);
+  font-size: 5rem; font-weight: 800;
+  color: var(--a2); opacity: .06; line-height: 1;
+}
+.ic-quote-mark {
+  font-family: var(--fd);
+  font-size: 3.5rem; font-weight: 800;
+  color: var(--a2); opacity: .15; line-height: 1;
+  margin-bottom: -.5rem;
+}
+.ic-pull {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: clamp(13px, 1.9vw, 17px);
+  color: var(--gold);
+  margin-bottom: .5rem;
+  line-height: 1.45;
+}
+.ic-card-label {
+  font-family: var(--fm);
+  font-size: .48rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mu);
+  margin-bottom: 1rem;
+}
+.ic-title {
+  font-family: var(--fd);
+  font-size: clamp(17px, 2.8vw, 26px);
+  font-weight: 700;
+  color: var(--a2);
+  margin-bottom: .75rem;
+  line-height: 1.2;
+}
+.ic-body {
+  font-size: .81rem;
+  color: var(--w2);
+  line-height: 1.8;
+}
+
+/* ═══════════════════════════════════════════
+   CMO RECOMMENDATION CARDS
+   ═══════════════════════════════════════════ */
+.cmo-card {
+  background: var(--surface);
+  border: 1px solid var(--br);
+  border-radius: var(--r-xl);
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+.cmo-header {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--br);
+}
+.cmo-brand {
+  font-family: var(--fd);
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+.cmo-gap-quote {
+  font-family: var(--fb);
+  font-size: .8rem;
+  font-style: italic;
+  color: var(--mu);
+  line-height: 1.5;
+  margin-bottom: .7rem;
+}
+/* Tab pills: THE GAP / THE MOVE / THE OUTCOME */
+.cmo-tabs {
+  display: flex; gap: .5rem; flex-wrap: wrap;
+}
+.cmo-tab {
+  font-family: var(--fm);
+  font-size: .48rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mu);
+  display: flex; align-items: center; gap: .3rem;
+}
+.cmo-tab-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--a2);
+}
+.cmo-tab-dot.move  { background: var(--gold); }
+.cmo-tab-dot.outcome { background: var(--a2); }
+/* Brand indicator dot + name */
+.cmo-brand-row {
+  display: flex; align-items: center; gap: .5rem;
+  margin-top: 1rem; margin-bottom: .5rem;
+}
+.cmo-brand-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.cmo-brand-name {
+  font-family: var(--fm);
+  font-size: .56rem;
+  letter-spacing: .1em;
+  color: var(--w2);
+}
+/* CMO sub-labels */
+.cmo-lbl {
+  font-family: var(--fm);
+  font-size: .52rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin: .9rem 0 .3rem;
+}
+.cmo-lbl.gap     { color: var(--a2); }
+.cmo-lbl.move    { color: var(--gold); }
+.cmo-lbl.practice { color: #2ecc71; }
+.cmo-lbl.works   { color: #38bdf8; }
+.cmo-body {
+  font-size: .81rem;
+  color: var(--w2);
+  line-height: 1.78;
+  margin-bottom: .4rem;
+}
+.cmo-quote-line {
+  border-left: 3px solid var(--a2);
+  padding: .4rem 0 .4rem 1rem;
+  margin-top: .8rem;
+}
+.cmo-quote-line p {
+  font-family: var(--fd);
+  font-style: italic;
+  font-size: clamp(12px, 1.8vw, 15px);
+  color: var(--gold);
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════
+   SOURCES SECTION
+   ═══════════════════════════════════════════ */
+.sources-list {
+  font-family: var(--fm);
+  font-size: .7rem;
+  color: var(--w2);
+  line-height: 1.9;
+  list-style: none; padding: 0;
+  border: 1px solid var(--br);
+  border-radius: var(--r-lg);
+  padding: 1.2rem 1.4rem;
+  background: var(--surface);
+}
+.sources-list li {
+  padding: .3rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.03);
+}
+.sources-list li:last-child { border-bottom: none; }
+.sources-list li::before {
+  content: '—';
+  color: var(--a2);
+  margin-right: .5rem;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER — giant watermark + return link
+   ═══════════════════════════════════════════ */
+footer {
+  border-top: 1px solid var(--br);
+  padding: 3rem 2rem 0;
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.footer-quote {
+  font-family: var(--fd);
+  font-size: clamp(16px, 2.5vw, 26px);
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.4;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+.footer-note {
+  font-size: .78rem;
+  color: var(--mu);
+  max-width: 520px;
+  margin: 0 auto 1rem;
+  line-height: 1.7;
+}
+.footer-note em { color: var(--w2); font-style: italic; }
+.footer-copy {
+  font-family: var(--fm);
+  font-size: .52rem;
+  letter-spacing: .1em;
+  color: var(--mu2);
+  margin-bottom: 1.5rem;
+}
+.btn-return {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .65rem 1.6rem;
+  border: 1px solid var(--br);
+  border-radius: var(--r-md);
+  font-family: var(--fm);
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--a2);
+  transition: all .2s;
+  margin-bottom: 3rem;
+}
+.btn-return:hover { background: var(--a); border-color: var(--a); color: #fff; }
+/* Giant watermark text */
+.watermark {
+  font-family: var(--fd);
+  font-size: clamp(24px, 7vw, 90px);
+  font-weight: 800;
+  color: var(--a3);
+  opacity: .12;
+  line-height: 1.1;
+  text-align: center;
+  letter-spacing: .02em;
+  user-select: none;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  padding: 0;
+  white-space: pre-line;
+  overflow: hidden;
+}
+/* Footer case study nav */
+.footer-nav {
+  border-top: 1px solid var(--br);
+  padding: 1.5rem 2rem;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-nav-label {
+  font-family: var(--fm);
+  font-size: .54rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--mu);
+}
+.footer-nav-links { display: flex; gap: .75rem; flex-wrap: wrap; }
+.footer-nav-link {
+  padding: .45rem 1rem;
+  border: 1px solid var(--br);
+  border-radius: var(--r-md);
+  font-family: var(--fm);
+  font-size: .58rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--a2);
+  transition: all .2s;
+}
+.footer-nav-link:hover { background: var(--a-dim); border-color: var(--br2); }
+
+/* ═══════════════════════════════════════════
+   REVEAL ANIMATION
+   ═══════════════════════════════════════════ */
+.rv { opacity: 1; transform: none; transition: opacity .65s ease, transform .65s ease; }
+.rv.will-animate { opacity: 0; transform: translateY(22px); }
+.rv.will-animate.in { opacity: 1; transform: none; }
+
+/* ═══════════════════════════════════════════
+   UTILITY
+   ═══════════════════════════════════════════ */
+.g2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+@media (max-width: 580px) { .g2, .g3 { grid-template-columns: 1fr; } }
+.kc {
+  background: var(--surface);
+  border: 1px solid var(--br);
+  border-radius: var(--r-lg);
+  padding: 1.1rem;
+  text-align: center;
+}
+.kn { font-family: var(--fm); font-size: clamp(16px, 2.5vw, 24px); font-weight: 700; color: var(--a2); line-height: 1; }
+.kl { font-family: var(--fm); font-size: .5rem; letter-spacing: .1em; text-transform: uppercase; color: var(--mu); margin-top: .3rem; }
+.editorial {
+  font-style: italic;
+  font-size: .79rem;
+  color: var(--gold);
+  line-height: 1.7;
+  margin-top: .8rem;
+  padding-top: .8rem;
+  border-top: 1px solid var(--br);
+}
+.editorial strong { color: var(--a2); font-style: normal; }
+
+/* ═══════════════════════════════════════════
+   ACCESSIBILITY — focus states
+   ═══════════════════════════════════════════ */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--a2);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .ham { display: flex; }
+  body { cursor: auto; }
+  #ccr, #ccd { display: none; }
+  .hero { padding: 80px 1.5rem 4rem; }
+  .wrap { padding: 0 1.5rem 6rem; }
+  nav { padding: 0 1.5rem; }
+}
+@media (max-width: 480px) {
+  .stat-row { grid-template-columns: repeat(2,1fr); }
+  .metric-row { grid-template-columns: repeat(2,1fr); }
+  .donut-wrap { flex-direction: column; }
+  .bc-header { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<!-- Custom cursor -->
+<div id="ccr" aria-hidden="true"></div>
+<div id="ccd" aria-hidden="true"></div>
+<!-- Scroll progress -->
+<div id="sp" style="width:0%" aria-hidden="true"></div>
+<!-- Back to top -->
+<button id="btt" aria-label="Back to top">↑</button>
+
+<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+<nav role="navigation" aria-label="Case study sections">
+  <span class="nav-brand">AADHYA</span>
+  <div class="nav-links">
+    <a href="#brief"><span class="nav-num">01</span>Brief</a>
+    <a href="#stage"><span class="nav-num">02</span>Stage</a>
+    <a href="#map"><span class="nav-num">03</span>Map</a>
+    <a href="#brands"><span class="nav-num">04</span>Brands</a>
+    <a href="#turns"><span class="nav-num">05</span>Turns</a>
+    <a href="#war"><span class="nav-num">06</span>War</a>
+    <a href="#insights"><span class="nav-num">07</span>Insights</a>
+    <a href="#cmo"><span class="nav-num">08</span>CMO</a>
+    <a href="#sources"><span class="nav-num">09</span>Sources</a>
+  </div>
+  <a href="index.html" class="nav-portfolio">+ Portfolio</a>
+  <div class="ham" id="ham" aria-label="Open menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<!-- Mobile menu -->
+<div id="mn" role="dialog" aria-label="Navigation" aria-modal="true">
+  <button id="mc" aria-label="Close menu">✕</button>
+  <a href="#brief"    class="mnl">01 Brief</a>
+  <a href="#stage"    class="mnl">02 Stage</a>
+  <a href="#map"      class="mnl">03 Map</a>
+  <a href="#brands"   class="mnl">04 Brands</a>
+  <a href="#turns"    class="mnl">05 Turns</a>
+  <a href="#war"      class="mnl">06 War</a>
+  <a href="#insights" class="mnl">07 Insights</a>
+  <a href="#cmo"      class="mnl">08 CMO</a>
+  <a href="#sources"  class="mnl">09 Sources</a>
+  <a href="index.html" class="mnl">← Portfolio</a>
+</div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero" id="brief" aria-labelledby="hero-h1">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-topline" aria-hidden="true"></div>
+
+  <div class="hero-kicker rv">Portfolio Case Study</div>
+  <h1 class="hero-h1 rv" id="hero-h1">Quick Commerce<br>Competitor Analysis</h1>
+  <p class="hero-sub rv">India's 10-Minute War</p>
+  <div class="hero-byline rv">
+    By Aadhya &nbsp;·&nbsp; BBA, IITM (GGSIPU University) &nbsp;·&nbsp; Delhi-NCR &nbsp;·&nbsp; <span>2026</span>
+  </div>
+  <div class="hero-rule rv"></div>
+
+  <!-- Section divider + content starts below fold -->
+  <div class="sec-divider rv">
+    <span class="sec-num-label">Section 01</span>
+  </div>
+  <div class="sec-index rv">01</div>
+  <h2 class="ch rv" style="font-size:clamp(32px,5vw,60px)">The Brief</h2>
+
+  <div class="pull rv">
+    <p>Before the data. Before the brands. Before the battlefield.</p>
+  </div>
+
+  <h3 class="bp rv" style="color:var(--w);font-weight:600;margin-bottom:.6rem">Why this exists</h3>
+  <p class="bp rv">In 2024, India collectively pressed a button and expected groceries in <em>ten minutes</em>.</p>
+  <p class="bp rv">Not tomorrow. Not in an hour. <em>Ten minutes</em>.</p>
+  <p class="bp rv">And somehow, five companies built entire business models — worth billions of dollars, employing hundreds of thousands of people, reshaping urban India's relationship with its own kitchen — around making that happen.</p>
+  <p class="bp rv">This case study exists because I wanted to understand not just <em>what</em> these companies do, but <em>how</em> they think. How they position themselves. How they market to the same urban Indian consumer, in the same ten-minute window, and try to mean something different to that person.</p>
+  <p class="bp rv">I am a second-year BBA student at IITM, affiliated with GGSIPU University, Delhi. I live in Gurgaon. I have ordered from all five platforms in this case study — sometimes in the same week — and I have watched this sector evolve in real time, from my own phone screen and from the research I have spent months building.</p>
+  <p class="bp rv">This is not a college assignment. There is no submission deadline, no professor grading this, no rubric to follow. This is a portfolio document — built for recruiters, marketing professionals, and anyone who wants to see how a marketing student thinks when the guardrails come off.</p>
+
+  <h3 class="bp rv" style="color:var(--w);font-weight:600;margin-bottom:.6rem;margin-top:1.2rem">What this case study is</h3>
+  <p class="bp rv">A full competitor analysis of India's quick commerce sector, covering <b>five brands</b>:</p>
+  <ul class="bc-list rv" style="margin-bottom:1rem">
+    <li><b>Blinkit</b> — the market leader, Eternal's crown jewel, and a brand still figuring out its own personality.</li>
+    <li><b>Zepto</b> — the fastest-growing challenger, with the sector's best creative engine and its most damaging internal contradiction.</li>
+    <li><b>Swiggy Instamart</b> — the structural powerhouse, riding a 55M-user food delivery pipeline, now learning to stand alone.</li>
+    <li><b>Flipkart Minutes</b> — the most underestimated player, with an extraordinary multi-category USP that nobody knows about yet.</li>
+    <li><b>Amazon Now</b> — the most trusted brand in the room, fighting on the wrong battlefield.</li>
+  </ul>
+  <p class="bp rv">Across nine sections, this document covers market context, brand deep dives, turning points, competitive positioning, original strategic insights, and one bold CMO recommendation per brand.</p>
+
+  <h3 class="bp rv" style="color:var(--w);font-weight:600;margin-bottom:.6rem;margin-top:1.2rem">What this case study is not</h3>
+  <p class="bp rv">It is not a SWOT table from a textbook. It is not a PESTLE framework filled in for marks. It is not a summary of what these brands say about themselves in their press releases.</p>
+  <p class="bp rv">It is an attempt to think like a junior strategist — someone who has done the research, formed opinions, and is willing to defend them.</p>
+
+  <h3 class="bp rv" style="color:var(--w);font-weight:600;margin-bottom:.6rem;margin-top:1.2rem">The central question</h3>
+  <p class="bp rv">Every brand in this sector promises the same thing: your order, fast.</p>
+  <p class="bp rv">Speed has been commoditised. Ten minutes is not a differentiator anymore — it is a category requirement, like having an app or accepting UPI. Every player has it. Nobody wins on it alone.</p>
+  <p class="bp rv">So the real question this case study is trying to answer is:</p>
+  <div class="pull rv">
+    <p><em>In a market where everyone delivers in ten minutes, what actually makes a brand worth choosing — and worth remembering?</em></p>
+  </div>
+  <p class="bp rv">That question runs through every section that follows.</p>
+  <div class="code-box rv">The brands that survive this shift will not be the ones that delivered fastest. They will be the ones that meant something beyond a stopwatch.</div>
+</section>
+
+<!-- ═══════════════════ SECTION 02 — STAGE ═══════════════════ -->
+<div class="wrap">
+<section class="cs" id="stage" aria-labelledby="stage-h">
+  <div class="sec-divider"><span class="sec-num-label">Section 02</span></div>
+  <div class="sec-index">02</div>
+  <h2 class="ch" id="stage-h">Setting the <em>Stage</em></h2>
+
+  <!-- 4 stat boxes — matches PDF -->
+  <div class="stat-row rv">
+    <div class="stat-box">
+      <div class="stat-box-val">$3.05B → $5–7B</div>
+      <div class="stat-box-lbl">Market Size</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-val">75–85%</div>
+      <div class="stat-box-lbl">Growth Rate · 2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-val">30–32%</div>
+      <div class="stat-box-lbl">Top Category — Snacks &amp; Beverages</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-val">4,00,000</div>
+      <div class="stat-box-lbl">Gig Workers Employed</div>
+    </div>
+  </div>
+
+  <p class="bp rv">Before diving into individual brands, here is the battlefield in numbers.</p>
+
+  <!-- Big red metric row — matches PDF -->
+  <div class="metric-row rv">
+    <div>
+      <div class="metric-val">₹3.05B</div>
+      <div class="metric-lbl">FY24 Market Size</div>
+    </div>
+    <div>
+      <div class="metric-val">75–85%</div>
+      <div class="metric-lbl">2025 Growth Rate</div>
+    </div>
+    <div>
+      <div class="metric-val">⅔</div>
+      <div class="metric-lbl">Of E-Grocery on Q-Comm</div>
+    </div>
+    <div>
+      <div class="metric-val">4,00,000</div>
+      <div class="metric-lbl">Gig Workers (2024)</div>
+    </div>
+  </div>
+
+  <p class="bp rv"><b>Market size:</b> ₹3.05B in FY2024, projected ₹5–7B by end of 2025.</p>
+  <p class="bp rv"><b>Growth rate:</b> 75–85% in 2025 — one of the fastest-growing consumer internet categories in the world.</p>
+  <p class="bp rv"><b>Consumer shift:</b> Two-thirds of all e-grocery orders in India now happen on quick commerce platforms.</p>
+  <p class="bp rv"><b>Average order value:</b> Rose from ₹250 to ₹500 sector-wide. Blinkit leads at ₹625–660. Instamart commands the highest at ₹725.</p>
+
+  <!-- AOV Bar Chart — matches PDF -->
+  <div class="chart-box rv">
+    <div class="chart-title">Average Order Value by Brand</div>
+    <div class="bar-row">
+      <div class="bar-label">Instamart</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      <div class="bar-val">₹725</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Blinkit</div>
+      <div class="bar-track"><div class="bar-fill" style="width:77%"></div></div>
+      <div class="bar-val">₹560</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Zepto</div>
+      <div class="bar-track"><div class="bar-fill" style="width:77%"></div></div>
+      <div class="bar-val">₹560</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Amazon Now</div>
+      <div class="bar-track"><div class="bar-fill" style="width:41%"></div></div>
+      <div class="bar-val">₹300</div>
+    </div>
+  </div>
+
+  <p class="bp rv"><b>Last-mile cost:</b> 12–15% of transaction value.</p>
+  <p class="bp rv"><b>Employment:</b> 4,00,000 gig workers directly employed across platforms in 2024 — a number that makes the labour rights debate not just ethical, but politically unavoidable.</p>
+  <p class="bp rv"><b>Top category:</b> Snacks and beverages, at 30–32% of all orders. India is not just ordering groceries. It is ordering snacks, electronics, medicines, fashion, and in at least one documented Instamart order, a ₹4.3 lakh cart containing an iPhone and gold coins.</p>
+
+  <h3 class="bp rv" style="color:var(--w);font-weight:600;margin-bottom:.7rem;margin-top:1rem">Brand one-liners</h3>
+  <ul class="bc-list rv">
+    <li><b>Blinkit:</b> Grofers (2013) → rebranded 2021, 10-min delivery, Eternal's crown jewel.</li>
+    <li><b>Zepto:</b> Founded 2021, 21–30% share, 1,000+ dark stores, 45k SKUs.</li>
+    <li><b>Instamart:</b> Launched 2020, ~26% share via Swiggy logistics; rebranded standalone May 2025.</li>
+    <li><b>Flipkart Minutes:</b> 10–15 min delivery, atta + iPhone + kurti in one cart.</li>
+    <li><b>Amazon Now:</b> Mid-2025 pilot, Prime ecosystem, trust-led positioning.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════ SECTION 03 — THE BATTLEFIELD (MAP) ═══════════════════ -->
+<section class="cs" id="map" aria-labelledby="map-h">
+  <div class="sec-divider"><span class="sec-num-label">Section 03</span></div>
+  <div class="sec-index">03</div>
+  <h2 class="ch" id="map-h">The <em>Battlefield</em></h2>
+  <p class="bp rv">A 2×2 positioning map across two axes: <b>Speed Advantage</b> (horizontal) and <b>Trust &amp; Brand Strength</b> (vertical).</p>
+
+  <!-- 2x2 Positioning Map -->
+  <div class="map-wrap rv">
+    <div style="position:relative;padding-left:2rem;padding-bottom:1.8rem">
+      <div class="map-canvas" id="positioning-map" aria-label="2x2 positioning map: Speed Advantage vs Trust and Brand Strength">
+        <!-- Quadrant corner labels -->
+        <div class="map-label tl">High Trust · Low Speed</div>
+        <div class="map-label tr">High Trust · High Speed</div>
+        <div class="map-label bl">Low Trust · Low Speed</div>
+        <div class="map-label br">Low Trust · High Speed</div>
+        <!-- Axis labels -->
+        <div class="map-label axis-y">Trust &amp; Brand Strength ↑</div>
+        <div class="map-label axis-x">Speed Advantage →</div>
+
+        <!-- Brand dots — positioned to match PDF -->
+        <!-- Blinkit: high trust, high speed → top-right -->
+        <div class="map-dot" style="left:72%;top:22%" role="img" aria-label="Blinkit: high trust, high speed">
+          <div class="map-dot-circle" style="color:var(--blinkit);background:var(--blinkit)"></div>
+          <div class="map-dot-name">Blinkit</div>
+        </div>
+        <!-- Amazon Now: high trust, low speed → top-left -->
+        <div class="map-dot" style="left:30%;top:30%" role="img" aria-label="Amazon Now: high trust, lower speed">
+          <div class="map-dot-circle" style="color:var(--amazonnow);background:var(--amazonnow)"></div>
+          <div class="map-dot-name">Amazon Now</div>
+        </div>
+        <!-- Zepto: mid trust, mid-high speed -->
+        <div class="map-dot" style="left:60%;top:42%" role="img" aria-label="Zepto: mid trust, high speed">
+          <div class="map-dot-circle" style="color:var(--zepto);background:var(--zepto)"></div>
+          <div class="map-dot-name">Zepto</div>
+        </div>
+        <!-- Instamart: mid trust, mid speed -->
+        <div class="map-dot" style="left:58%;top:54%" role="img" aria-label="Instamart: mid trust, mid speed">
+          <div class="map-dot-circle" style="color:var(--instamart);background:var(--instamart)"></div>
+          <div class="map-dot-name">Instamart</div>
+        </div>
+        <!-- Flipkart Minutes: low trust, mid-high speed → lower mid -->
+        <div class="map-dot" style="left:38%;top:72%" role="img" aria-label="Flipkart Minutes: low brand recall, decent speed">
+          <div class="map-dot-circle" style="color:var(--fkmin);background:var(--fkmin)"></div>
+          <div class="map-dot-name">Flipkart Minutes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="bp rv"><span style="color:var(--gold);font-style:italic;font-size:.82rem">Read the map:</span> Blinkit sits top-right: fastest density and the strongest moment-marketing recall. Zepto and Instamart cluster mid-field — high speed, brand strength still consolidating (Zepto on creative, Instamart on parent equity). Flipkart Minutes is the dark horse — strong USP, weak recall — placed lower-mid for now. Amazon Now sits in the top-left: enormous trust equity, lowest current speed footprint. The scoreboard moves every quarter, but the gaps it reveals — Amazon's trust without speed, Minutes' speed without identity — are where the next round of competition will be fought.</p>
+</section>
+
+<!-- ═══════════════════ SECTION 04 — BRAND DEEP DIVES ═══════════════════ -->
+<section class="cs" id="brands" aria-labelledby="brands-h">
+  <div class="sec-divider"><span class="sec-num-label">Section 04</span></div>
+  <div class="sec-index">04</div>
+  <h2 class="ch" id="brands-h">Brand Deep <em>Dives</em></h2>
+  <p class="bp rv">Five brands, five different bets on the same battlefield. Each profile below covers overview, pricing model, marketing strategy, strengths, weaknesses, recent news, user reactions, and a personal observation from primary research — closing with the gap I spotted that the analyst reports keep missing.</p>
+
+  <!-- ── BLINKIT ── -->
+  <div class="bc rv" style="border-left:4px solid var(--blinkit)">
+    <div class="bc-header">
+      <div class="bc-avatar" style="background:var(--blinkit)" aria-label="Blinkit logo B">B</div>
+      <div class="bc-header-text">
+        <div class="bc-name" style="color:var(--blinkit)">Blinkit</div>
+        <div class="bc-meta">Eternal (formerly Zomato) · Founded 2013 as Grofers · Rebranded 2021</div>
+        <div class="bc-tags">
+          <span class="bc-tag">Market Share 40–45%</span>
+          <span class="bc-tag">Dark Stores 1,816</span>
+          <span class="bc-tag">AOV ₹625</span>
+        </div>
+      </div>
+    </div>
+    <div class="bc-stats">
+      <div class="stat-item"><div class="stat-num" style="color:var(--blinkit)">40–45%</div><div class="stat-lbl">Market Share</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--blinkit)">1,816</div><div class="stat-lbl">Dark Stores (Q2 FY26)</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--blinkit)">₹625</div><div class="stat-lbl">AOV (Q1 FY25)</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--blinkit)">$13B</div><div class="stat-lbl">Valuation (Apr 2024)</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--blinkit)">1.2M+</div><div class="stat-lbl">Daily Orders (Peak)</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--blinkit)">30+</div><div class="stat-lbl">Cities</div></div>
+    </div>
+    <div class="bc-body">
+      <div class="bc-sub">Brand Overview</div>
+      <p>Founded December 2013 as Grofers by Albinder Dhindsa &amp; Saurabh Kumar. Rebranded to Blinkit in December 2021. Acquired by Zomato (now Eternal) in August 2022 for a $568M all-stock deal.</p>
+      <p>Targeting 2,100 dark stores by December 2025 and 3,000 by March 2027. Q4 FY25 GOV of ₹9,421 crore; FY25 annual revenue around ₹4,390 crore.</p>
+      <div class="bc-sub">Pricing &amp; Model</div>
+      <p>Delivery fee: ₹10–₹50, with most metros clustering at ₹15–₹30 base. Surge pricing of ₹20–₹50 during peak hours, rainy evenings, and festivals — sparking Reddit/X backlash: "Kitna niche jayenge ye log".</p>
+      <p>Blinkit Prime / Pass: monthly subscription in the ₹99–₹299 range, waiving delivery fees on orders above ₹199–₹249. Product margin of 15–25% on own inventory, plus sponsored listing revenue.</p>
+      <div class="bc-sub">Marketing Strategy</div>
+      <ul class="bc-list">
+        <li>~1,700 micro-influencers in 2024–25 (10K–100K followers, ₹2–4 crore spend) — content focused on college snacks, late-night cravings, and "forgot the essentials" moments.</li>
+        <li>Brown paper bags (2024) with witty line art by local artists — users reused, framed, and shared them. Every delivery became a mini billboard.</li>
+        <li>Meme-driven social tone: grocery as meme content on X/Instagram. Mango season, cricket snack spikes, "emergency popcorn" orders. 50–70% snack order spikes during IPL/World Cup.</li>
+        <li>The Coriander Moment: CEO Albinder Dhindsa personally replied and built a free coriander feature into the platform. Result: 1M+ views, 14K+ likes, 1.5K+ reposts. Now cited as a masterclass in moment marketing.</li>
+        <li>Key campaign lines: "Ab fridge bhar ke rakho ya Blinkit se mangwalo" / "Kya 10-minute mein aayega? Haan bhai, Blinkit hai"</li>
+      </ul>
+      <div class="bc-sub">Strengths vs Weaknesses</div>
+      <div class="bc-sw">
+        <div>
+          <div class="bc-sw-head" style="color:#2ecc71">Strengths</div>
+          <ul class="bc-list">
+            <li>Market leader: 40–45% share (Goldman backed).</li>
+            <li>Densest dark store network: 1,816 stores; 60%+ of net additions among top three.</li>
+            <li>Zomato/Eternal ecosystem: cross-sell to 100M–120M MAU.</li>
+            <li>Moment-driven marketing: coriander, paper bags, IPL memes, micro-influencer blitz.</li>
+            <li>Only player with positive adjusted EBITDA — ₹4 crore (Q2 FY26) — first major q-comm profit.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="bc-sw-head" style="color:var(--a2)">Weaknesses</div>
+          <ul class="bc-list">
+            <li>Service quality and CS complaints: slow/missing refunds, failed transactions, poor support responsiveness.</li>
+            <li>Surge pricing backlash: ₹20–₹50 surge on ₹250–₹300 orders erodes goodwill even among loyal users.</li>
+            <li>Brand voice under-leveraged: still feels like "Zomato's grocery arm" with no distinct visual/tonal identity of its own.</li>
+            <li>High burn model risk: aggressive dark store capex could reverse profitability if uptake slows.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bc-sub" style="margin-top:1rem">Recent News</div>
+      <ul class="bc-list">
+        <li>First-party inventory shift (Sep 2025): moved from marketplace to inventory-led model. ~90% of net order value from own inventory by late 2025.</li>
+        <li>Profitability milestone: ₹4 crore adjusted EBITDA (Oct–Dec 2025) — first major q-comm player to post profit.</li>
+        <li>Total funding from Zomato since 2022: ~₹4,300 crore injected.</li>
+      </ul>
+      <div class="bc-sub" style="margin-top:1rem">User Reactions</div>
+      <div class="reactions">
+        <div>
+          <div class="reactions-col-head pos">Positive</div>
+          <div class="reaction-item pos">"Fast delivery even in rain — 10 minutes is hard to beat."</div>
+          <div class="reaction-item pos">"Coriander moment + funny packaging = reasons users keep returning."</div>
+        </div>
+        <div>
+          <div class="reactions-col-head neg">Negative</div>
+          <div class="reaction-item neg">Reddit: "High demand surge charge fee on ₹250 product 😭 Kitna niche jayenge ye log".</div>
+          <div class="reaction-item neg">App store: "Switching to Zepto — loyalty thin when support is poor."</div>
+        </div>
+      </div>
+      <div class="obs-box">
+        <div class="obs-label">Personal Observation (Primary Research)</div>
+        <p>In Gurgaon/Delhi-NCR: extremely fast in core pockets but pincode gaps still create frustration.</p>
+        <p>Prime/Pass value makes sense only if ordering 3–4 times/month — many users now realise this from social teardowns.</p>
+      </div>
+    </div>
+    <div class="gap-box">
+      <div class="gap-label">◆ The Gap I Spotted</div>
+      <p>Blinkit has the strongest commercial and brand-moment foundations in the sector. Coriander. Paper bags. Cricket memes. But it still feels like "Zomato's grocery arm" — not a standalone brand. If Zomato's food brand weakens, does Blinkit's mental equity survive alone?</p>
+      <p>A bolder direction: "Your 10-minute sabziwala, scaled into a city" — Indian kirana vibes (coriander, chalkboard, loose chillies) instead of generic "sexy app" aesthetics.</p>
+    </div>
+    <div class="sw-footer">
+      <div>
+        <div class="sw-footer-head">Top Strengths</div>
+        <div class="sw-pill str">Market leader</div>
+        <div class="sw-pill str">Densest dark store network</div>
+      </div>
+      <div>
+        <div class="sw-footer-head">Top Weaknesses</div>
+        <div class="sw-pill wk">Service quality and CS complaints</div>
+        <div class="sw-pill wk">Surge pricing backlash</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ZEPTO ── -->
+  <div class="bc rv" style="border-left:4px solid var(--zepto)">
+    <div class="bc-header">
+      <div class="bc-avatar" style="background:var(--zepto)" aria-label="Zepto logo Z">Z</div>
+      <div class="bc-header-text">
+        <div class="bc-name" style="color:var(--zepto)">Zepto</div>
+        <div class="bc-meta">Zepto Limited (IPO-bound) · Founded July 2021 by Aadit Palicha &amp; Kaivalya Vohra</div>
+        <div class="bc-tags">
+          <span class="bc-tag">Market Share 21–30%</span>
+          <span class="bc-tag">Dark Stores 1,000+</span>
+          <span class="bc-tag">AOV ~</span>
+        </div>
+      </div>
+    </div>
+    <div class="bc-stats">
+      <div class="stat-item"><div class="stat-num" style="color:var(--zepto)">21–30%</div><div class="stat-lbl">Market Share (#2)</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--zepto)">1,000+</div><div class="stat-lbl">Dark Stores · 80+ Cities</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--zepto)">1.7M</div><div class="stat-lbl">Daily Orders</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--zepto)">$7B</div><div class="stat-lbl">Valuation (Oct 2025)</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--zepto)">150%</div><div class="stat-lbl">FY25 Revenue Growth</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--zepto)">₹11,110Cr</div><div class="stat-lbl">FY25 Revenue</div></div>
+    </div>
+    <div class="bc-body">
+      <div class="bc-sub">Brand Overview</div>
+      <p>Founded July 2021 as KiranaKart by Aadit Palicha and Kaivalya Vohra (Stanford dropouts, 17–18 at founding). Rebranded to Zepto and pivoted to the dark store model.</p>
+      <p>$7B valuation in October 2025 via a $450M round led by CalPERS. Converted to Zepto Limited in IPO preparation for 2026.</p>
+      <div class="bc-sub">Pricing &amp; Model</div>
+      <p>Zepto Pass (2024): subscription offering free/discounted delivery, exclusive pricing, priority and flash-sale access — 1M subscribers in one week at launch.</p>
+      <p>Dark pattern controversy: r/F**kZepto (9,000+ members) for hidden charges, confusing checkout, mandatory add-ons appearing only at the final step. Consumer Affairs Ministry warning (May 2025), later fined ₹7 lakh.</p>
+      <div class="bc-sub">Marketing Strategy — Best Creative Engine in Q-Comm</div>
+      <ul class="bc-list">
+        <li>CBO Chandan Mendiratta (joined Jan 2024): three pillars: consistency, frequency, earned media. Codified exact purple hex, standardised kerning and typography, mood guide for Gen Z/millennials.</li>
+        <li>Calendar delivery bags (2024) designed to hang on kitchen walls. CBO: "If my bag stays on your wall for 12 months, that's a marketing win."</li>
+        <li>Soan Papdi (Diwali 2024): every delivery came with a free Soan Papdi sweet — heavy UGC spike, festive ritual feel.</li>
+        <li>Father's Day film (2024): son practising "I love you" in the mirror before saying it to his dad. Widely shared as warm, low-hype, high-emotional.</li>
+        <li>Janmashtami "Makhan Chor" stunt: empty Amul butter packet + card — heavy earned media at near-zero spend.</li>
+        <li>Brand-film pace (Sep 2024–Feb 2025): 50–60 films in six months, 99% co-branded (Surf Excel, Eveready, Eno, Amul) — shared cost model = rich library without burning capital on media buys alone.</li>
+      </ul>
+      <div class="bc-sub">Strengths vs Weaknesses</div>
+      <div class="bc-sw">
+        <div>
+          <div class="bc-sw-head" style="color:#2ecc71">Strengths</div>
+          <ul class="bc-list">
+            <li>Fastest growing revenue: 150% YoY (₹4,454 Cr → ₹11,110 Cr).</li>
+            <li>Most structured brand system in Indian q-comm — dedicated CBO, codified playbook.</li>
+            <li>Zepto Pass: best loyalty launch in sector (1M subscribers in 1 week).</li>
+            <li>Leading creative output: Soan Papdi, Father's Day, Makhan Chor, calendar bags, 50–60 co-branded films.</li>
+            <li>LinkedIn #1 Top Startup India 2025 (3rd consecutive year). IPO-bound — maturity signal.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="bc-sw-head" style="color:var(--a2)">Weaknesses</div>
+          <ul class="bc-list">
+            <li>Heavily loss-making despite 150% revenue growth. Unit economics lag Blinkit significantly.</li>
+            <li>Dark pattern regulatory heat: r/F**kZepto + Consumer Affairs warning + ₹7L fine = serious trust gap risk.</li>
+            <li>App clutter: CEO publicly admitted the app is visually crowded. Simplification pledged but still in progress.</li>
+            <li>Fewer cities than rivals: 80+ vs Blinkit's broader spread. Density strategy = thinner Tier II/III reach.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bc-sub" style="margin-top:1rem">Recent News</div>
+      <ul class="bc-list">
+        <li>LinkedIn #1 Top Startups India 2025 (3rd year).</li>
+        <li>Zepto Cafe paused in 44 cities (staffing + operational challenges) — but still runs at ~$110M annual run rate in select markets.</li>
+      </ul>
+      <div class="bc-sub" style="margin-top:1rem">User Reactions</div>
+      <div class="reactions">
+        <div>
+          <div class="reactions-col-head pos">Positive</div>
+          <div class="reaction-item pos">"Speed insane — 10 mins in rain/festival/late night."</div>
+          <div class="reaction-item pos">"Zepto Pass is one of the best value subs."</div>
+          <div class="reaction-item pos">"Soan Papdi, Father's Day, Makhan Chor praised as simple, ownable, shareable."</div>
+        </div>
+        <div>
+          <div class="reactions-col-head neg">Negative</div>
+          <div class="reaction-item neg">r/F**kZepto: hidden fees, checkout tricks. "₹10–₹20 extra charges appear at last screen only."</div>
+          <div class="reaction-item neg">"The brand is warm, but the app makes me feel tricked — that's a dangerous disconnect."</div>
+        </div>
+      </div>
+      <div class="obs-box">
+        <div class="obs-label">Personal Observation (Primary Research)</div>
+        <p>In Delhi-NCR: extremely fast in core pockets (Vaishali, Noida, South Ex, Rajouri).</p>
+        <p>Value best with Zepto Pass + co-branded promos.</p>
+        <p>Emotional films (Father's Day, Soan Papdi) create strong recall — but last-step fees and app clutter make the same user feel wary. Ordered during Diwali? The free Soan Papdi was a genuine surprise moment.</p>
+      </div>
+    </div>
+    <div class="gap-box">
+      <div class="gap-label">◆ The Gap I Spotted</div>
+      <p>Zepto has the most creative, warm, and emotionally intelligent brand engine in q-comm. Soan Papdi. Father's Day. Calendar bags. But on the other side: hidden fees, dark patterns, a cluttered app the CEO himself admits is broken.</p>
+      <p>That's the sharpest gap in the sector — not between brands, but within the SAME brand.</p>
+      <p>You can't run "I love you, Dad" campaigns and "₹20 mystery charge at checkout" in the same breath. The fix isn't a new campaign — it's redesigning checkout as a brand asset, not a revenue funnel.</p>
+    </div>
+    <div class="sw-footer">
+      <div>
+        <div class="sw-footer-head">Top Strengths</div>
+        <div class="sw-pill str">Fastest growing revenue</div>
+        <div class="sw-pill str">Most structured brand system in Indian q-comm — dedicated CBO, codified playbook</div>
+      </div>
+      <div>
+        <div class="sw-footer-head">Top Weaknesses</div>
+        <div class="sw-pill wk">Heavily loss-making despite 150% revenue growth</div>
+        <div class="sw-pill wk">Dark pattern regulatory heat</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INSTAMART ── -->
+  <div class="bc rv" style="border-left:4px solid var(--instamart)">
+    <div class="bc-header">
+      <div class="bc-avatar" style="background:var(--instamart)" aria-label="Instamart logo I">I</div>
+      <div class="bc-header-text">
+        <div class="bc-name" style="color:var(--instamart)">Instamart</div>
+        <div class="bc-meta">Swiggy (listed) · Launched August 2020 · Rebranded May 2025</div>
+        <div class="bc-tags">
+          <span class="bc-tag">Market Share 26%</span>
+          <span class="bc-tag">Dark Stores 1,150+</span>
+          <span class="bc-tag">AOV ₹725</span>
+        </div>
+      </div>
+    </div>
+    <div class="bc-stats">
+      <div class="stat-item"><div class="stat-num" style="color:var(--instamart)">26%</div><div class="stat-lbl">Market Share (Q1 2026)</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--instamart)">1,150+</div><div class="stat-lbl">Dark Stores · 150+ Cities</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--instamart)">₹725</div><div class="stat-lbl">AOV (Q3 FY26) — Highest</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--instamart)">15M+</div><div class="stat-lbl">MAU</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--instamart)">12M+</div><div class="stat-lbl">Swiggy One Subscribers</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--instamart)">₹12,500Cr</div><div class="stat-lbl">GOV (Q3 FY26, +45% YoY)</div></div>
+    </div>
+    <div class="bc-body">
+      <div class="bc-sub">Brand Overview</div>
+      <p>Launched August 2020 by Swiggy. Founders: Sriharsha Majety, Nandan Reddy, Rahul Jaimini. Swiggy IPO: November 28, 2024 at ₹390/share. Valuation ~$13.4B (market cap ~$14.2B, April 2026).</p>
+      <p>10–20 minute deliveries. Contributes 38% of Swiggy's consolidated revenue.</p>
+      <div class="bc-sub">Strengths vs Weaknesses</div>
+      <div class="bc-sw">
+        <div>
+          <div class="bc-sw-head" style="color:#2ecc71">Strengths</div>
+          <ul class="bc-list">
+            <li>Highest AOV (₹725) — premium assortment, bigger baskets.</li>
+            <li>Unrivalled cross-sell: 55M food users as a pipeline.</li>
+            <li>Swiggy One: strongest ecosystem lock-in. 12M+ subscribers, 2x LTV.</li>
+            <li>Widest city coverage in the top three: 150+ cities.</li>
+            <li>Non-grocery 30% = fastest category diversification.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="bc-sw-head" style="color:var(--a2)">Weaknesses</div>
+          <ul class="bc-list">
+            <li>₹650 crore loss Q1 FY26 — still worse unit economics than Blinkit at ~1.5% margin.</li>
+            <li>Slower expansion: +55 stores Q3 vs Blinkit's 320 — density gaps in Tier-2 cities.</li>
+            <li>No standalone Instamart identity — 40% of users unaware of Instamart specifics (Swiggy Q4 FY25).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="obs-box">
+        <div class="obs-label">Personal Observation (Primary Research)</div>
+        <p>In Gurgaon: 12-min deliveries reliable.</p>
+        <p>Non-grocery (phone chargers) ordered during rains = game-changer moment.</p>
+        <p>IPL campaign registered as Swiggy-wide, not Instamart-unique. Feels like "Swiggy but faster groceries" — seamless tab, not a separate app experience.</p>
+      </div>
+    </div>
+    <div class="gap-box">
+      <div class="gap-label">◆ The Gap I Spotted</div>
+      <p>Instamart has the best structural advantage — 55M food users as a ready grocery pipeline. But 40% of users don't even know what Instamart specifically is.</p>
+      <p>Every memorable campaign is Swiggy-wide, not Instamart-own. No bold grocery-only identity. If spun off tomorrow, it has nothing.</p>
+      <p>AOV ₹725 = users spend most here = silent premium signal. But Instamart never markets it as premium. That's a positioning gap hiding in plain sight.</p>
+    </div>
+    <div class="sw-footer">
+      <div>
+        <div class="sw-footer-head">Top Strengths</div>
+        <div class="sw-pill str">Highest AOV (₹725) — premium assortment, bigger baskets</div>
+        <div class="sw-pill str">Unrivalled cross-sell</div>
+      </div>
+      <div>
+        <div class="sw-footer-head">Top Weaknesses</div>
+        <div class="sw-pill wk">₹650 crore loss Q1 FY26 — still worse unit economics than Blinkit at ~1</div>
+        <div class="sw-pill wk">Slower expansion</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FLIPKART MINUTES ── -->
+  <div class="bc rv" style="border-left:4px solid var(--fkmin)">
+    <div class="bc-header">
+      <div class="bc-avatar" style="background:var(--fkmin)" aria-label="Flipkart Minutes logo F">F</div>
+      <div class="bc-header-text">
+        <div class="bc-name" style="color:var(--fkmin)">Flipkart Minutes</div>
+        <div class="bc-meta">Walmart-owned Flipkart · Launched August 2024 (pilot, Bengaluru)</div>
+        <div class="bc-tags">
+          <span class="bc-tag">Market Share ~</span>
+          <span class="bc-tag">Dark Stores ~800</span>
+          <span class="bc-tag">AOV ~</span>
+        </div>
+      </div>
+    </div>
+    <div class="bc-stats">
+      <div class="stat-item"><div class="stat-num" style="color:var(--fkmin)">Distant 4th</div><div class="stat-lbl">Market Position</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--fkmin)">~800</div><div class="stat-lbl">Dark Stores (Q1 2026)</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--fkmin)">10–15 min</div><div class="stat-lbl">Delivery Promise</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--fkmin)">400M+</div><div class="stat-lbl">Flipkart User Pipeline</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--fkmin)">₹3,248 Cr</div><div class="stat-lbl">Walmart Capital Infusion</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--fkmin)">1,600</div><div class="stat-lbl">Store Target (End 2026)</div></div>
+    </div>
+    <div class="bc-body">
+      <div class="bc-sub">Brand Overview</div>
+      <p>Launched August 2024 as a pilot in Bengaluru. Original head Kabeer Biswas (Dunzo co-founder) has since stepped down; current head Kunal Gupta (long-time Flipkart exec).</p>
+      <p>~800 dark stores (Q1 2026), targeting 1,600 by end 2026 across 250 cities by June 2026, adding 100 stores/month. Key differentiator: only major player that can deliver atta + iPhone + kurti together in 10–15 minutes.</p>
+      <div class="bc-sub">Strengths vs Weaknesses</div>
+      <div class="bc-sw">
+        <div>
+          <div class="bc-sw-head" style="color:#2ecc71">Strengths</div>
+          <ul class="bc-list">
+            <li>Walmart capital: no funding anxiety. ₹3,248 crore infusion buffers expansion.</li>
+            <li>400M+ Flipkart user pipeline — the largest pre-existing base in the sector.</li>
+            <li>Data-first placement: 10+ years of Flipkart purchase data = most efficient dark store network design.</li>
+            <li>Electronics + fashion depth: only player delivering smartphones + fashion + groceries together in 10–15 mins.</li>
+            <li>Tier II/III first-mover. Big Billion Days lever — annual 33-crore visit event = trial engine.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="bc-sw-head" style="color:var(--a2)">Weaknesses</div>
+          <ul class="bc-list">
+            <li>Latest entrant: ~3 years behind Blinkit. Missed own target — aimed for 800 stores by end 2025, reached only 500–600.</li>
+            <li>No distinct Minutes brand identity. No Minutes-specific loyalty program.</li>
+            <li>Low brand awareness: users still associate Flipkart with 1–2 day delivery, not 10–15 mins.</li>
+            <li>Leadership instability: Kabeer Biswas already stepped down → now under Kunal Gupta.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="obs-box">
+        <div class="obs-label">Personal Observation (Primary Research)</div>
+        <p>In Delhi-NCR: feels like "Flipkart's fast lane," not a separate brand.</p>
+        <p>Electronics + grocery combo discovered accidentally during Big Billion Days or urgent purchase — not from a campaign. Leadership change (Biswas → Gupta) raises execution continuity questions.</p>
+      </div>
+    </div>
+    <div class="gap-box">
+      <div class="gap-label">◆ The Gap I Spotted</div>
+      <p>Flipkart Minutes can deliver an iPhone, a kurti, and atta together in 10–15 minutes. That is extraordinary. No one else can say that. But the brand is saying nothing.</p>
+      <p>Blinkit's coriander lives rent-free in people's heads. Zepto's Soan Papdi became a Diwali ritual. Minutes has a better USP than both — and zero recall.</p>
+      <p>A strong reframing: "One tap, 15 minutes: your phone, your outfit, your groceries." Paired with hyper-local, meme-heavy storytelling around panic-to-relief moments (college, festivals, last-minute weddings).</p>
+    </div>
+    <div class="sw-footer">
+      <div>
+        <div class="sw-footer-head">Top Strengths</div>
+        <div class="sw-pill str">Walmart capital</div>
+        <div class="sw-pill str">400M+ Flipkart user pipeline — the largest pre-existing base in the sector</div>
+      </div>
+      <div>
+        <div class="sw-footer-head">Top Weaknesses</div>
+        <div class="sw-pill wk">Latest entrant</div>
+        <div class="sw-pill wk">No distinct Minutes brand identity</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── AMAZON NOW ── -->
+  <div class="bc rv" style="border-left:4px solid var(--amazonnow)">
+    <div class="bc-header">
+      <div class="bc-avatar" style="background:var(--amazonnow)" aria-label="Amazon Now logo A">A</div>
+      <div class="bc-header-text">
+        <div class="bc-name" style="color:var(--amazonnow)">Amazon Now</div>
+        <div class="bc-meta">Amazon India · Launched mid-2025 in Bengaluru</div>
+        <div class="bc-tags">
+          <span class="bc-tag">Market Share ~</span>
+          <span class="bc-tag">Dark Stores ~350–450</span>
+          <span class="bc-tag">AOV ₹260–₹300</span>
+        </div>
+      </div>
+    </div>
+    <div class="bc-stats">
+      <div class="stat-item"><div class="stat-num" style="color:var(--amazonnow)">6 cities</div><div class="stat-lbl">Live (Apr 2026)</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--amazonnow)">350–450</div><div class="stat-lbl">Micro-Fulfilment Centres</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--amazonnow)">₹260–₹300</div><div class="stat-lbl">AOV (Lowest in Sector)</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--amazonnow)">25% MoM</div><div class="stat-lbl">Order Growth</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--amazonnow)">3×</div><div class="stat-lbl">Prime Member Frequency</div></div>
+      <div class="stat-item"><div class="stat-num" style="color:var(--amazonnow)">$40B+</div><div class="stat-lbl">Amazon Committed to India</div></div>
+    </div>
+    <div class="bc-body">
+      <div class="bc-sub">Brand Overview</div>
+      <p>Amazon Now is live in 6 cities: Bengaluru, Delhi, Mumbai, Chennai, Pune + 1 more. Opening ~2 new dark stores per day. Target ~1,000–1,200 by end 2026.</p>
+      <p>Prime members triple shopping frequency once they discover Amazon Now (Amazon FY2026 SEC filing data). Market share dwarfed by Blinkit, Zepto, Instamart.</p>
+      <div class="bc-sub">Strengths vs Weaknesses</div>
+      <div class="bc-sw">
+        <div>
+          <div class="bc-sw-head" style="color:#2ecc71">Strengths</div>
+          <ul class="bc-list">
+            <li>Prime pipeline: high-trust, high-spend users. 3x frequency jump once they adopt Amazon Now.</li>
+            <li>Global capital: $40B+ committed to India by 2030. Can absorb multi-year losses.</li>
+            <li>25-year India logistics edge: sort centres, fulfilment, reverse logistics, returns infrastructure far more mature than any startup rival.</li>
+            <li>Largest selection in small spaces: broader SKU mix than grocery-first rivals (FMCG, electronics, baby, health, toys, personal care).</li>
+          </ul>
+        </div>
+        <div>
+          <div class="bc-sw-head" style="color:var(--a2)">Weaknesses</div>
+          <ul class="bc-list">
+            <li>Lowest AOV in sector: ₹260–300 vs Blinkit ₹660, Instamart ₹725 — attracting low-value top-up orders, not premium grocery baskets.</li>
+            <li>FDI structural handicap: cannot own inventory directly; marketplace workarounds dilute control, agility, and margin vs domestic players.</li>
+            <li>No brand moment, no meme, no campaign. Feels corporate, not local. Zero India-specific q-comm identity.</li>
+            <li>Brand perception mismatch: "Amazon = 1–2 day e-commerce" in most Indians' minds.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="obs-box">
+        <div class="obs-label">Personal Observation (Primary Research)</div>
+        <p>In Delhi-NCR/Gurgaon: users start with Amazon Fresh (24-hr groceries) and only slowly discover Amazon Now.</p>
+        <p>Once discovered: appreciate trust + returns but rarely treat as primary 10-min app (that still feels like Blinkit/Zepto). Amazon = "safe, reliable, returns-friendly" NOT "speed" in consumer's mental map.</p>
+      </div>
+    </div>
+    <div class="gap-box">
+      <div class="gap-label">◆ The Gap I Spotted</div>
+      <p>Amazon Now is the most trusted brand in the room — and it's fighting for tomatoes. That's the strategic misfire of the sector.</p>
+      <p>Amazon's equity = "my iPhone arrived safely, return was smooth." Not "10-minute atta." While Blinkit races on speed and Zepto races on emotion, Amazon should own HIGH-TRUST, HIGH-VALUE quick commerce — electronics, medicines, baby care, premium personal care. Categories where consumers hesitate to order from Blinkit because they worry about authenticity, expiry, damage.</p>
+      <p>"The 10-minute safety net for purchases that matter" — not another grocery app. That's an unclaimed positioning no one in the sector can match.</p>
+    </div>
+    <div class="sw-footer">
+      <div>
+        <div class="sw-footer-head">Top Strengths</div>
+        <div class="sw-pill str">Prime pipeline</div>
+        <div class="sw-pill str">Global capital</div>
+      </div>
+      <div>
+        <div class="sw-footer-head">Top Weaknesses</div>
+        <div class="sw-pill wk">Lowest AOV in sector</div>
+        <div class="sw-pill wk">FDI structural handicap</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SECTION 05 — TURNING POINTS ═══════════════════ -->
+<section class="cs" id="turns" aria-labelledby="turns-h">
+  <div class="sec-divider"><span class="sec-num-label">Section 05</span></div>
+  <div class="sec-index">05</div>
+  <h2 class="ch" id="turns-h">The Turning <em>Points</em></h2>
+  <div class="pull rv"><p>When brands, regulators, and reality collided.</p></div>
+
+  <!-- TP 1 — Blinkit -->
+  <div class="tp-item rv">
+    <div class="tp-dot" style="background:var(--blinkit)"></div>
+    <span class="tp-brand-tag" style="color:var(--blinkit);border-color:rgba(245,197,24,.3)">Blinkit</span>
+    <span class="tp-date">January 2026</span>
+    <h3 class="tp-title">Deepinder Goyal's Long-Form Defence After Strike Calls</h3>
+    <div class="tp-section-lbl what">What Happened</div>
+    <p class="tp-body">In the first week of January 2026 — days after gig worker unions called flash strikes on December 25 and New Year's Eve — Deepinder Goyal sat down for a four-hour episode on Raj Shamani's "Figuring Out" podcast. It was the most detailed on-record defence of Zomato and Blinkit's gig work model the company had ever given. Goyal revealed that Zomato terminates roughly 5,000 delivery partners every month — primarily for fraud and "Karma Score" violations — while an additional 1.5 to 2 lakh partners exit voluntarily. He said a rider working 6 days a week, 8 to 10 hours a day, can earn upwards of ₹25,000 per month. He also cited welfare data: rider earnings per hour had risen to approximately ₹102 in 2025, average monthly earnings stood at around ₹21,000, and Eternal had spent over ₹100 crore on fully company-funded insurance in 2025.</p>
+    <div class="tp-section-lbl why">Why It Matters</div>
+    <p class="tp-body">The timing was not coincidental. Goyal chose a viral, long-form format — not a press release — to put granular labour and insurance data into the public domain at exactly the moment when worker organising and regulatory scrutiny made silence reputationally dangerous. This is reputation management through earned media, and it worked.</p>
+    <div class="tp-section-lbl lesson">The Marketing Lesson</div>
+    <p class="tp-body">When your business model comes under fire, a press statement dies in 24 hours. A four-hour podcast lives for months. Goyal did not just defend Blinkit — he reframed the entire narrative around data, empathy, and transparency. The lesson for any brand in a legitimacy crisis: go long, go human, and go first.</p>
+  </div>
+
+  <!-- TP 2 — Zepto -->
+  <div class="tp-item rv">
+    <div class="tp-dot" style="background:var(--zepto)"></div>
+    <span class="tp-brand-tag" style="color:var(--zepto);border-color:rgba(139,92,246,.3)">Zepto</span>
+    <span class="tp-date">December 2024 – December 2025</span>
+    <h3 class="tp-title">Dark Pattern Backlash, CCPA ₹7 Lakh Penalty &amp; a Reddit Anti-Brand</h3>
+    <div class="tp-section-lbl what">What Happened</div>
+    <p class="tp-body">From late 2024, users on Reddit and X began flagging something uncomfortable about Zepto's checkout: the bill total on screen didn't match what you actually paid. Packaging charges and handling fees were buried — visible only if you downloaded a GST invoice. One user shared a screenshot showing a ₹1,600 bill that actually totalled ₹1,574 before hidden charges were added. "Totally sneaky and untrustworthy," they wrote. This anger crystallised into r/F**kZepto — a dedicated Reddit community launched in January 2025, explicitly described as "a platform to call out anything unethical related to Zepto." It grew to over 9,000 members in under five months and nearly 10,000 by mid-2025. The CCPA formally fined Zepto ₹7 lakh for dark patterns and misleading price disclosures. Under pressure, Zepto overhauled its app — and CEO Aadit Palicha publicly admitted the fee experiments had been "a mistake" that was now "killed."</p>
+    <div class="tp-section-lbl why">Why It Matters</div>
+    <p class="tp-body">Zepto had built some of the most emotionally intelligent brand creative in the sector — Father's Day films, Soan Papdi nostalgia, Makhan Chor stunts. And simultaneously, it was running checkout flows that made its own users feel tricked. That contradiction became the defining story of the brand in 2025.</p>
+    <div class="tp-section-lbl lesson">The Marketing Lesson</div>
+    <p class="tp-body">You cannot run "I love you, Dad" campaigns and "₹20 mystery charge at checkout" in the same breath. A brand is not just its advertising — it is every touchpoint a user experiences. When the checkout process contradicts the brand film, the checkout always wins in the user's memory. The fix was never a new campaign. It was fixing the product.</p>
+  </div>
+
+  <!-- TP 3 — Instamart -->
+  <div class="tp-item rv">
+    <div class="tp-dot" style="background:var(--instamart)"></div>
+    <span class="tp-brand-tag" style="color:var(--instamart);border-color:rgba(255,107,0,.3)">Instamart</span>
+    <span class="tp-date">May 2025</span>
+    <h3 class="tp-title">Dropping "Swiggy" to Become a Standalone Brand</h3>
+    <div class="tp-section-lbl what">What Happened</div>
+    <p class="tp-body">In May 2025, Swiggy's quick commerce arm officially dropped "Swiggy" from its name. The platform — previously known as Swiggy Instamart — rebranded to simply Instamart, with a new logo, updated packaging, and refreshed rider gear. The timing was deliberate — the rebrand came just weeks after Zomato renamed its listed parent entity to "Eternal."</p>
+    <div class="tp-section-lbl why">Why It Matters</div>
+    <p class="tp-body">This was not a logo refresh. It was a brand-architecture pivot — from feature to flagship. For years, Instamart existed as "the grocery tab on the Swiggy app." This rebrand is Swiggy's public declaration that Instamart has outgrown that framing and now needs to compete — and be remembered — on its own terms.</p>
+    <div class="tp-section-lbl lesson">The Marketing Lesson</div>
+    <p class="tp-body">A brand that is permanently "attached to" another brand has a ceiling. If Instamart ever needs its own capital raise, its own partnerships, or its own positioning against Blinkit and Zepto — it cannot do that as a tab. The rebrand was strategically necessary. The execution risk now is whether Instamart can build genuine recall fast enough to justify the independence it just claimed.</p>
+  </div>
+
+  <!-- TP 4 — Flipkart Minutes -->
+  <div class="tp-item rv">
+    <div class="tp-dot" style="background:var(--fkmin)"></div>
+    <span class="tp-brand-tag" style="color:var(--fkmin);border-color:rgba(40,116,240,.3)">Flipkart Minutes</span>
+    <span class="tp-date">October 2025</span>
+    <h3 class="tp-title">Dunzo Co-Founder Kabeer Biswas Exits Within 10 Months</h3>
+    <div class="tp-section-lbl what">What Happened</div>
+    <p class="tp-body">When Flipkart hired Kabeer Biswas — co-founder and former CEO of Dunzo — in January 2025 to lead Flipkart Minutes, it was a high-signal hire. By October 26, 2025 — barely 10 months later — Biswas was gone. Kunal Gupta, a 10-year company veteran, took over.</p>
+    <div class="tp-section-lbl why">Why It Matters</div>
+    <p class="tp-body">In a sector where speed and conviction of leadership are everything, a high-profile founder-operator walking out in under a year is not just an HR event — it is a brand signal. It raises questions about internal alignment, and about what the real strategy for Minutes actually is.</p>
+    <div class="tp-section-lbl lesson">The Marketing Lesson</div>
+    <p class="tp-body">Leadership is brand. When your headline hire exits early, your competitors notice, your users notice, and so do investors and potential hires. Flipkart Minutes has an extraordinary structural advantage — Walmart capital, 400M+ users, electronics + fashion + grocery in one tap. But without a consistent, visible leader who owns the Minutes story publicly, that advantage stays invisible. A brand without a face is a feature, not a franchise.</p>
+  </div>
+
+  <!-- TP 5 — Amazon Now -->
+  <div class="tp-item rv">
+    <div class="tp-dot" style="background:var(--amazonnow)"></div>
+    <span class="tp-brand-tag" style="color:var(--amazonnow);border-color:rgba(255,153,0,.3)">Amazon Now</span>
+    <span class="tp-date">2024 – 2026</span>
+    <h3 class="tp-title">Quick Commerce Under FDI Handcuffs and Antitrust Heat</h3>
+    <div class="tp-section-lbl what">What Happened</div>
+    <p class="tp-body">Amazon Now enters India's quick commerce race with the deepest pockets in the room — and the most structural constraints. India's FDI rules allow 100% foreign investment only in marketplace e-commerce, explicitly prohibiting FDI in inventory-led B2C models. This means Amazon cannot own grocery inventory directly the way Blinkit does. Layered on top of this is a CCI antitrust investigation — launched in 2020 and concluded by 2024 — which found that Amazon breached Indian competition law through preferential treatment of select sellers in search rankings and visibility.</p>
+    <div class="tp-section-lbl why">Why It Matters</div>
+    <p class="tp-body">Amazon Now is attempting to enter quick commerce as the most trusted consumer brand in the room — and it is doing so with one hand tied behind its back by law, and the other hand flagged by a regulator. No Indian competitor faces this combination of structural and legal constraints.</p>
+    <div class="tp-section-lbl lesson">The Marketing Lesson</div>
+    <p class="tp-body">Amazon's instinct is to compete on Blinkit's turf — tomatoes, atta, onions. That is a strategic misfire. Amazon's equity is built on "my iPhone arrived exactly as described, and the return was seamless." That trust transfers to high-value, high-stakes categories. The 10-minute safety net for purchases that actually matter. No one in the sector has claimed it. Amazon is the only one who can.</p>
+  </div>
+
+  <!-- TP 6 — Raghav Chadha "10 minutes" ban -->
+  <div class="tp-item rv">
+    <div class="tp-dot" style="background:var(--mu)"></div>
+    <span class="tp-brand-tag" style="color:var(--mu);border-color:rgba(122,106,88,.3)">Sector-Wide</span>
+    <span class="tp-date">December 2025 – January 2026</span>
+    <h3 class="tp-title">Raghav Chadha's "Tyranny of 10 Minutes" Speech → Government Kills the Slogan</h3>
+    <div class="tp-section-lbl what">What Happened</div>
+    <p class="tp-body">On December 5, 2025, AAP MP Raghav Chadha used Zero Hour in the Rajya Sabha to make gig workers — and quick commerce — front-page politics. His phrase — "the tyranny of 10 minutes" — became the most-quoted line in the sector's political coverage that winter. In early January 2026, Labour Minister Mansukh Mandaviya met with representatives from Blinkit, Zepto, Swiggy, Zomato, and other platforms — and persuaded them to voluntarily drop "10-minute delivery" from their branding and marketing. The countdown timer — the single most recognisable creative device in all of Indian q-comm — was quietly retired from public communication.</p>
+    <div class="tp-section-lbl why">Why It Matters</div>
+    <p class="tp-body">This is the category's first major regulatory line in the sand. The government did not ban speed — it banned the glorification of speed as a marketing slogan divorced from worker safety and road responsibility. Every brand in this sector had built its entire identity around "10 minutes." That identity was just legislated away in a single January meeting.</p>
+    <div class="tp-section-lbl lesson">The Marketing Lesson</div>
+    <p class="tp-body">When your core brand promise becomes a political target, you have a legitimacy problem — not a communications problem. The brands that will survive this shift are those that can build recall and loyalty around something deeper than a countdown clock.</p>
+  </div>
+
+  <!-- TP 7 — Gig Worker Strikes -->
+  <div class="tp-item rv">
+    <div class="tp-dot" style="background:var(--a2)"></div>
+    <span class="tp-brand-tag" style="color:var(--a2);border-color:var(--br)">Sector-Wide</span>
+    <span class="tp-date">December 25 &amp; 31, 2025</span>
+    <h3 class="tp-title">Christmas &amp; New Year's Eve Gig Worker Strikes Force the Issue</h3>
+    <div class="tp-section-lbl what">What Happened</div>
+    <p class="tp-body">In the final week of 2025, gig worker unions representing delivery partners across Zomato, Swiggy, Blinkit, Zepto, Amazon, and Flipkart called two coordinated actions: a flash strike on December 25 and a nationwide strike on December 31 — New Year's Eve, one of the single highest-order-volume days in the sector's calendar. Their demands: minimum earning guarantees, transparent and fair incentives, an end to arbitrary ID blocks, access to social security and insurance, and relief from the unsafe pressure of ultra-fast delivery timelines.</p>
+    <div class="tp-section-lbl why">Why It Matters</div>
+    <p class="tp-body">This was the moment worker power, regulatory risk, and brand narrative fully intersected. Quick commerce is not just a technology story or a UX story — it is a labour story, and that labour story is now being told by the workers themselves, in Parliament, on social media, and on the industry's biggest nights.</p>
+    <div class="tp-section-lbl lesson">The Marketing Lesson</div>
+    <p class="tp-body">Every brand in this sector sells convenience. But convenience has a human cost — and that cost is now visible, organised, and politically legible. The brands that will build durable equity going forward are those that can demonstrate that the humans enabling that speed are treated with dignity. That is not just an ethical position. In 2026, it is a brand-positioning necessity.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ SECTION 06 — WAR MAP ═══════════════════ -->
+<section class="cs" id="war" aria-labelledby="war-h">
+  <div class="sec-divider"><span class="sec-num-label">Section 06</span></div>
+  <div class="sec-index">06</div>
+  <h2 class="ch" id="war-h">The War <em>Map</em></h2>
+  <p class="bp rv">Five brands. One battlefield. Very different bets. Quick commerce in India is now a scale, capital and execution war between Blinkit and the chasing pack — with Amazon Now accelerating from behind.</p>
+
+  <!-- Market share donut -->
+  <div class="donut-wrap rv" aria-label="Quick Commerce Market Share Q1 2026">
+    <div class="donut-svg-wrap">
+      <svg width="140" height="140" viewBox="0 0 140 140" role="img" aria-label="Donut chart: Blinkit 45%, Instamart 26%, Zepto 22%, Others 7%">
+        <circle cx="70" cy="70" r="50" fill="none" stroke="#17171c" stroke-width="28"/>
+        <!-- Blinkit 45% -->
+        <circle cx="70" cy="70" r="50" fill="none" stroke="#F5C518" stroke-width="28"
+          stroke-dasharray="141.37 172.79" stroke-dashoffset="0" transform="rotate(-90 70 70)"/>
+        <!-- Instamart 26% -->
+        <circle cx="70" cy="70" r="50" fill="none" stroke="#FF6B00" stroke-width="28"
+          stroke-dasharray="81.68 232.48" stroke-dashoffset="-141.37" transform="rotate(-90 70 70)"/>
+        <!-- Zepto 22% -->
+        <circle cx="70" cy="70" r="50" fill="none" stroke="#8B5CF6" stroke-width="28"
+          stroke-dasharray="69.12 244.04" stroke-dashoffset="-223.05" transform="rotate(-90 70 70)"/>
+        <!-- Others 7% -->
+        <circle cx="70" cy="70" r="50" fill="none" stroke="#7a6a58" stroke-width="28"
+          stroke-dasharray="21.99 292.17" stroke-dashoffset="-292.17" transform="rotate(-90 70 70)"/>
+      </svg>
+    </div>
+    <div class="donut-legend">
+      <div class="donut-title">Quick Commerce Market Share — Q1 2026</div>
+      <div class="legend-row"><div class="legend-dot" style="background:var(--blinkit)"></div><div class="legend-name">Blinkit</div><div class="legend-pct">45%</div></div>
+      <div class="legend-row"><div class="legend-dot" style="background:var(--instamart)"></div><div class="legend-name">Instamart</div><div class="legend-pct">26%</div></div>
+      <div class="legend-row"><div class="legend-dot" style="background:var(--zepto)"></div><div class="legend-name">Zepto</div><div class="legend-pct">22%</div></div>
+      <div class="legend-row"><div class="legend-dot" style="background:var(--mu)"></div><div class="legend-name">Others</div><div class="legend-pct">7%</div></div>
+    </div>
+  </div>
+
+  <!-- FY25 Revenue bar chart -->
+  <div class="chart-box rv">
+    <div class="chart-title">FY25 Revenue Comparison (₹ Cr)</div>
+    <div class="rev-row">
+      <div class="rev-label">Zepto FY25</div>
+      <div style="flex:1;display:flex;align-items:center;gap:.5rem">
+        <div class="rev-bar" style="width:100%"></div>
+        <div class="rev-val">₹11,110 Cr</div>
+      </div>
+    </div>
+    <div class="rev-row">
+      <div class="rev-label">Blinkit FY25</div>
+      <div style="flex:1;display:flex;align-items:center;gap:.5rem">
+        <div class="rev-bar" style="width:39%"></div>
+        <div class="rev-val">₹4,390 Cr</div>
+      </div>
+    </div>
+    <div class="rev-row">
+      <div class="rev-label">Instamart (38% of Swiggy)</div>
+      <div style="flex:1;display:flex;align-items:center;gap:.5rem">
+        <div class="rev-bar" style="width:34%"></div>
+        <div class="rev-val">₹3,800 Cr</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison table -->
+  <h3 class="bp rv" style="font-weight:600;color:var(--w);margin-bottom:.6rem;margin-top:1rem">01 — Market share &amp; scale</h3>
+  <div class="tw rv">
+    <table>
+      <thead>
+        <tr>
+          <th>Lens</th><th>Blinkit</th><th>Zepto</th><th>Swiggy Instamart</th><th>Flipkart Minutes</th><th>Amazon Now</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Market share</td><td style="color:var(--blinkit)">~44–50% of q-comm orders; mid-40s in 2024, trending above 50% by late 2025.</td><td>~28–30% in 2024–25; generally second in share.</td><td>~22–27%; in a tight fight with Zepto depending on metric (GOV vs orders).</td><td>Low single digits</td><td>Low single digits; very early-stage</td></tr>
+        <tr><td>Dark stores</td><td style="color:var(--blinkit)">1,816 dark stores in Q2 FY26</td><td>1,000+ dark stores across 70–80 cities by late 2025</td><td>1,021–1,062 active dark stores across 124–127 cities by FY25–Q1 FY26</td><td>600+ dark stores across ~30 cities by early 2026</td><td>300+ micro-fulfilment centres across Delhi-NCR, Mumbai and Bengaluru</td></tr>
+        <tr><td>Cities live</td><td style="color:var(--blinkit)">~150–153 cities as of March 2025</td><td>70–80+ cities; originally metro-first, now deeper into smaller cities</td><td>124–127 cities as of Q4 FY25–Q1 FY26</td><td>30+ new cities added in 2025</td><td>3 metros live (Delhi-NCR, Mumbai, Bengaluru)</td></tr>
+        <tr><td>Scale verdict</td><td style="color:var(--blinkit)">Largest share, dense network, very high absolute volumes</td><td>Fastest volume growth off a lower base; very high daily orders for a 2021-born brand</td><td>Truly national footprint among the top three; strong but still No.3 on orders</td><td>Smaller than top three but ramping stores aggressively with Walmart capital</td><td>Smallest footprint; still in pilot/early rollout compared to others</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="editorial rv"><strong>Editorial:</strong> Blinkit still wins on overall share and density, and now also on profitability at scale. Zepto is the volume growth rocket, matching Blinkit on daily orders despite starting much later. Instamart wins on breadth of city coverage and Swiggy ecosystem integration but remains structurally No. 3 on orders. Flipkart Minutes and Amazon Now are no longer rounding errors, but they are still fighting to earn a durable seat at the table.</p>
+
+  <h3 class="bp rv" style="font-weight:600;color:var(--w);margin-bottom:.6rem;margin-top:1.5rem">02 — Financials</h3>
+  <div class="tw rv">
+    <table>
+      <thead>
+        <tr><th>Lens</th><th>Blinkit</th><th>Zepto</th><th>Swiggy Instamart</th><th>Flipkart Minutes</th><th>Amazon Now</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>AOV (ticket size)</td><td>Q3 FY25 ~₹707; Q1 FY26 ~₹669; broadly ₹520–700 across cuts.</td><td>Generally quoted in the ₹430–500 band</td><td>Q4 FY25 ~₹527; Q1 FY26 ~₹612</td><td>Insider estimates ₹750–₹800 — among the highest in sector</td><td>Early-stage: ₹260–₹300 band, the lowest among major players</td></tr>
+        <tr><td>FY25 revenue (q-comm vertical)</td><td style="color:var(--blinkit)">~₹5,206 Cr revenue in FY25, +126% YoY from ₹2,301 Cr</td><td>FY25 "sales" (GMV-like) ₹9,668.8 Cr; operational revenue estimated ₹1,500–₹2,000 Cr</td><td>Instamart FY25 revenue ₹2,129.6 Cr, +118% YoY</td><td>Not broken out</td><td>Not broken out; part of Amazon's Indian marketplace/operations segment</td></tr>
+        <tr><td>Unit economics</td><td style="color:var(--blinkit)">Turned adjusted EBITDA positive in Q3 FY26 (~₹4 Cr); still investing but at or near break-even at vertical level</td><td>FY25 net loss ₹3,367.3 Cr, +177% YoY</td><td>FY25 net loss ₹1,886 Cr; Q4 FY25 adj. EBITDA loss ₹840 Cr</td><td>Undisclosed; widely understood to be heavy investment / loss-making mode</td><td>Pre-profit; Amazon explicitly prioritising footprint and assortment over near-term margins</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="bp rv" style="font-weight:600;color:var(--w);margin-bottom:.6rem;margin-top:1.5rem">03 — Brand &amp; marketing</h3>
+  <div class="tw rv">
+    <table>
+      <thead>
+        <tr><th>Lens</th><th>Blinkit</th><th>Zepto</th><th>Swiggy Instamart</th><th>Flipkart Minutes</th><th>Amazon Now</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Brand voice</td><td style="color:var(--blinkit)">Meme-driven, youth-first, IPL-anchored, internet-native; coriander, paper bags, real-time banter.</td><td style="color:var(--zepto)">Warm, emotionally charged, culturally fluent — Soan Papdi, Father's Day, Makhan Chor; codified design system.</td><td>Humorous, hyperlocal, snack-and-cricket — strong but tied to broader Swiggy parent identity.</td><td>Very low distinct voice; communications still say "Flipkart Minutes," not its own personality.</td><td>Classic corporate Amazon: trust, reliability, Prime — no India-specific q-comm campaign yet.</td></tr>
+        <tr><td>Standalone brand equity</td><td>Growing, but still feels like Zomato's grocery arm.</td><td style="color:var(--zepto)">Strongest standalone brand in sector — codified system + creative output.</td><td>Limited; 40% of users unaware of Instamart specifics. Rebranded May 2025 to build standalone identity.</td><td>Minimal — feels like "Flipkart's fast lane."</td><td>Borrowed entirely from Amazon parent; no q-comm-specific identity.</td></tr>
+        <tr><td>Loyalty engine</td><td>Blinkit Prime / Pass (₹99–₹299/mo).</td><td style="color:var(--zepto)">Zepto Pass — 1M+ subs, 2x LTV; bundles food + grocery.</td><td>Swiggy One — 12M+ subs, 2x LTV; bundles food + grocery.</td><td>None Minutes-specific; piggybacks on Flipkart Plus/Super.</td><td>Amazon Prime — 30–40M India users; 3x frequency uplift on Now.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="editorial rv"><strong>Editorial:</strong> Brand architecture and creative have diverged sharply. Zepto and Blinkit have built distinct, culturally fluent brands; Instamart still leans heavily on Swiggy; Flipkart Minutes and Amazon Now largely borrow from their parents.</p>
+</section>
+
+<!-- ═══════════════════ SECTION 07 — INSIGHTS ═══════════════════ -->
+<section class="cs" id="insights" aria-labelledby="insights-h">
+  <div class="sec-divider"><span class="sec-num-label">Section 07</span></div>
+  <div class="sec-index">07</div>
+  <h2 class="ch" id="insights-h">What Nobody's <em>Saying</em></h2>
+  <p class="bp rv">Three original strategic insights the analyst reports and industry coverage consistently miss. This is the section I am most proud of.</p>
+
+  <div class="ic rv">
+    <div class="ic-num">1</div>
+    <div class="ic-quote-mark">"</div>
+    <div class="ic-pull">In a market where speed is identical, brand personality is the real moat.</div>
+    <div class="ic-card-label">Card 01</div>
+    <h3 class="ic-title">Speed is no longer the moat — pricing transparency is.</h3>
+    <div class="pull" style="margin:0 0 .8rem"><p>When the checkout contradicts the brand film, the checkout always wins in the user's memory.</p></div>
+    <p class="ic-body">Every player delivers in 10–20 minutes. That's a category requirement, not a differentiator. The real wedge in 2026 is whether a user can trust the bill they see at checkout. Zepto's ₹7 lakh CCPA fine, the r/F**kZepto subreddit, and Blinkit's surge backlash all point to the same insight: the next round of brand love (and brand hate) will be won and lost on the checkout screen, not the homepage.</p>
+  </div>
+
+  <div class="ic rv">
+    <div class="ic-num">2</div>
+    <div class="ic-quote-mark">"</div>
+    <div class="ic-pull">You cannot run 'I love you, Dad' campaigns and '₹20 mystery charge' in the same breath.</div>
+    <div class="ic-card-label">Card 02</div>
+    <h3 class="ic-title">The labour story is now a brand story.</h3>
+    <div class="pull" style="margin:0 0 .8rem"><p>Convenience has a human cost, and that cost is now politically legible.</p></div>
+    <p class="ic-body">After Raghav Chadha's "tyranny of 10 minutes" speech, the New Year's Eve strike, and the Labour Ministry's January meeting that retired the 10-minute slogan, gig worker treatment is no longer a CSR side note — it's a positioning lever. Goyal's four-hour podcast worked because it traded press-release language for granular pay and insurance data. The brands that publish their welfare numbers first will own the moral high ground next.</p>
+  </div>
+
+  <div class="ic rv">
+    <div class="ic-num">3</div>
+    <div class="ic-quote-mark">"</div>
+    <div class="ic-pull">The most trusted brand in the room is fighting for tomatoes.</div>
+    <div class="ic-card-label">Card 03</div>
+    <h3 class="ic-title">The biggest unclaimed positioning is high-trust, high-value q-comm.</h3>
+    <div class="pull" style="margin:0 0 .8rem"><p>Amazon Now is the most trusted brand in the room — and it's fighting for tomatoes.</p></div>
+    <p class="ic-body">Every brand is fighting on the same battlefield: tomatoes, atta, onions, snacks. But the most lucrative and least contested space is the one Amazon is uniquely built for — electronics, medicines, baby care, premium personal care delivered in 10–20 minutes with returns that actually work. Flipkart Minutes is structurally the only other player who could claim it (atta + iPhone + kurti in one cart). Neither has. The first one to position around "the 10-minute safety net for purchases that matter" wins a whole new category.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ SECTION 08 — IF I WERE THE CMO ═══════════════════ -->
+<section class="cs" id="cmo" aria-labelledby="cmo-h">
+  <div class="sec-divider"><span class="sec-num-label">Section 08</span></div>
+  <div class="sec-index">08</div>
+  <h2 class="ch" id="cmo-h">If I Were <em>The CMO</em></h2>
+  <p class="bp rv">One bold, specific, execution-ready recommendation per brand. Not generic advice — real strategic calls, defended with evidence.</p>
+
+  <!-- Blinkit CMO -->
+  <div class="cmo-card rv">
+    <div class="cmo-header">
+      <div class="cmo-brand" style="color:var(--blinkit)">Blinkit</div>
+      <div class="cmo-gap-quote">"Strongest commercial and brand-moment foundations in the sector — coriander, paper bags, IPL memes — but still feels like 'Zomato's grocery arm.'"</div>
+      <div class="cmo-tabs">
+        <span class="cmo-tab"><span class="cmo-tab-dot"></span> The Gap</span>
+        <span class="cmo-tab"><span class="cmo-tab-dot move"></span> The Move</span>
+        <span class="cmo-tab"><span class="cmo-tab-dot outcome"></span> The Outcome</span>
+      </div>
+    </div>
+    <div class="cmo-brand-row">
+      <div class="cmo-brand-dot" style="background:var(--blinkit)"></div>
+      <div class="cmo-brand-name">Blinkit</div>
+    </div>
+    <div class="cmo-lbl gap">The Gap</div>
+    <p class="cmo-body">Strongest commercial and brand-moment foundations in the sector — coriander, paper bags, IPL memes — but still feels like Zomato's grocery arm. No standalone visual or tonal identity.</p>
+    <div class="cmo-lbl move">The One Move</div>
+    <p class="cmo-body">Launch a "Your 10-minute sabziwala" identity system: Indian kirana visual language (chalkboards, loose chillies, hand-lettered prices) replacing generic startup-app aesthetics.</p>
+    <div class="cmo-lbl practice">What This Looks Like in Practice</div>
+    <p class="cmo-body">New paper-bag series illustrated by sabziwalas from each city. Coriander-style free add-ons rotated weekly. Hyper-local Reels in regional dialects. A Diwali campaign built entirely around your local mandi vendor — not a celebrity.</p>
+    <div class="cmo-lbl works">Why This Works</div>
+    <p class="cmo-body">It uses the cultural authority Blinkit's coriander moment already proved exists. It defends against the FDI handicap Amazon has and the brand-vacuum Flipkart has. It also separates Blinkit's mental equity from Zomato's — survival insurance if the parent brand ever weakens.</p>
+    <div class="cmo-quote-line">
+      <p>'We are not a sexy startup app. We are India's biggest sabziwala — running on rails Zomato built.'</p>
+    </div>
+  </div>
+
+  <!-- Zepto CMO -->
+  <div class="cmo-card rv">
+    <div class="cmo-header">
+      <div class="cmo-brand" style="color:var(--zepto)">Zepto</div>
+      <div class="cmo-gap-quote">"The most emotionally intelligent creative engine in the sector running on top of a checkout flow that 9,000+ Reddit members and the CCPA both call manipulative."</div>
+      <div class="cmo-tabs">
+        <span class="cmo-tab"><span class="cmo-tab-dot"></span> The Gap</span>
+        <span class="cmo-tab"><span class="cmo-tab-dot move"></span> The Move</span>
+        <span class="cmo-tab"><span class="cmo-tab-dot outcome"></span> The Outcome</span>
+      </div>
+    </div>
+    <div class="cmo-brand-row">
+      <div class="cmo-brand-dot" style="background:var(--zepto)"></div>
+      <div class="cmo-brand-name">Zepto</div>
+    </div>
+    <div class="cmo-lbl gap">The Gap</div>
+    <p class="cmo-body">The most emotionally intelligent creative engine in the sector running on top of a checkout flow that 9,000+ Reddit members and the CCPA both call manipulative. The contradiction is the brand's biggest threat.</p>
+    <div class="cmo-lbl move">The One Move</div>
+    <p class="cmo-body">Stop treating checkout as a revenue funnel. Redesign it as a brand asset — the cleanest, most transparent fee disclosure in Indian q-comm — and market that fix as loudly as a Soan Papdi campaign.</p>
+    <div class="cmo-lbl practice">What This Looks Like in Practice</div>
+    <p class="cmo-body">A public "Honest Bill" pledge with a visible breakdown: product price, delivery, packaging, taxes — no surprises. Quarterly transparency reports signed by the CEO. Convert r/F**kZepto critics into a public advisory loop.</p>
+    <div class="cmo-lbl works">Why This Works</div>
+    <p class="cmo-body">It removes the single biggest piece of ammunition competitors have against Zepto. It turns a regulatory penalty into a positioning advantage — "Zepto: warm campaigns, honest bills." Trust compounds; a fixed checkout outlives any single film.</p>
+    <div class="cmo-quote-line">
+      <p>'We earned your tears with Father's Day. We will earn your trust at checkout.'</p>
+    </div>
+  </div>
+
+  <!-- Instamart CMO -->
+  <div class="cmo-card rv">
+    <div class="cmo-header">
+      <div class="cmo-brand" style="color:var(--instamart)">Instamart</div>
+      <div class="cmo-gap-quote">"Strongest structural advantage in the sector — 55M food users as a ready grocery pipeline — and the highest AOV (₹725)."</div>
+      <div class="cmo-tabs">
+        <span class="cmo-tab"><span class="cmo-tab-dot"></span> The Gap</span>
+        <span class="cmo-tab"><span class="cmo-tab-dot move"></span> The Move</span>
+        <span class="cmo-tab"><span class="cmo-tab-dot outcome"></span> The Outcome</span>
+      </div>
+    </div>
+    <div class="cmo-brand-row">
+      <div class="cmo-brand-dot" style="background:var(--instamart)"></div>
+      <div class="cmo-brand-name">Instamart</div>
+    </div>
+    <div class="cmo-lbl gap">The Gap</div>
+    <p class="cmo-body">Strongest structural advantage in the sector — 55M food users as a ready grocery pipeline — and the highest AOV (₹725). Yet 40% of users don't even know what Instamart specifically is. Every memorable campaign reads as Swiggy, not Instamart.</p>
+    <div class="cmo-lbl move">The One Move</div>
+    <p class="cmo-body">Build a single, ownable, Instamart-only campaign franchise around the silent premium signal already in the data: highest AOV in the sector. Position Instamart as India's premium q-comm — bigger baskets, better assortment, smarter homes.</p>
+    <div class="cmo-lbl practice">What This Looks Like in Practice</div>
+    <p class="cmo-body">A long-running "Bigger Baskets" series: real Instamart customers walking through a ₹1,000+ weekly order in their own kitchens. Diwali, IPL and wedding-season editions. A premium-only sub-brand for electronics, beauty and gourmet — separate landing tab, separate storytelling.</p>
+    <div class="cmo-lbl works">Why This Works</div>
+    <p class="cmo-body">It uses what Instamart already is — the highest-spend platform — and turns that data point into a positioning moat. It justifies the May 2025 standalone-brand pivot. It also makes Swiggy One harder to leave: premium identity + bundled subscription = double lock-in.</p>
+    <div class="cmo-quote-line">
+      <p>'Instamart is not Swiggy with groceries. It is the platform Indians actually fill their homes with.'</p>
+    </div>
+  </div>
+
+  <!-- Flipkart Minutes CMO -->
+  <div class="cmo-card rv">
+    <div class="cmo-header">
+      <div class="cmo-brand" style="color:var(--fkmin)">Flipkart Minutes</div>
+      <div class="cmo-gap-quote">"The best USP in the sector — atta, iPhone and kurti delivered together in 10–15 minutes — and zero brand recall."</div>
+      <div class="cmo-tabs">
+        <span class="cmo-tab"><span class="cmo-tab-dot"></span> The Gap</span>
+        <span class="cmo-tab"><span class="cmo-tab-dot move"></span> The Move</span>
+        <span class="cmo-tab"><span class="cmo-tab-dot outcome"></span> The Outcome</span>
+      </div>
+    </div>
+    <div class="cmo-brand-row">
+      <div class="cmo-brand-dot" style="background:var(--fkmin)"></div>
+      <div class="cmo-brand-name">Flipkart Minutes</div>
+    </div>
+    <div class="cmo-lbl gap">The Gap</div>
+    <p class="cmo-body">The best USP in the sector — atta, iPhone and kurti delivered together in 10–15 minutes — and zero brand recall. Coverage gaps and a leadership change have made the structural advantage invisible.</p>
+    <div class="cmo-lbl move">The One Move</div>
+    <p class="cmo-body">Productise the unique cart. Launch "One Tap, 15 Minutes" — a campaign and feature where users save and re-order multi-category emergency baskets (panic-to-relief moments: college, festivals, last-minute weddings).</p>
+    <div class="cmo-lbl practice">What This Looks Like in Practice</div>
+    <p class="cmo-body">Hyperlocal Reels in Tier II/III cities showing real situations — power-cut + phone charger + atta + candles at 11pm. Big Billion Days hero slot for Minutes (not just a banner). A visible Minutes spokesperson rebuilding leadership trust after the Biswas exit.</p>
+    <div class="cmo-lbl works">Why This Works</div>
+    <p class="cmo-body">It activates the 400M+ Flipkart user base around something only Minutes can deliver. It converts a feature into a franchise. It buys time on density issues by making each delivery a story-worthy event.</p>
+    <div class="cmo-quote-line">
+      <p>'We're not racing Blinkit on tomatoes. We're the only app that brings your phone, your outfit and your dinner in one tap.'</p>
+    </div>
+  </div>
+
+  <!-- Amazon Now CMO -->
+  <div class="cmo-card rv">
+    <div class="cmo-header">
+      <div class="cmo-brand" style="color:var(--amazonnow)">Amazon Now</div>
+      <div class="cmo-gap-quote">"Most trusted brand in the room, fighting for tomatoes."</div>
+      <div class="cmo-tabs">
+        <span class="cmo-tab"><span class="cmo-tab-dot"></span> The Gap</span>
+        <span class="cmo-tab"><span class="cmo-tab-dot move"></span> The Move</span>
+        <span class="cmo-tab"><span class="cmo-tab-dot outcome"></span> The Outcome</span>
+      </div>
+    </div>
+    <div class="cmo-brand-row">
+      <div class="cmo-brand-dot" style="background:var(--amazonnow)"></div>
+      <div class="cmo-brand-name">Amazon Now</div>
+    </div>
+    <div class="cmo-lbl gap">The Gap</div>
+    <p class="cmo-body">Most trusted brand in the room, fighting for tomatoes. Lowest AOV (₹260–₹300). FDI rules block inventory ownership. Trying to win Blinkit's game with Amazon's hands tied.</p>
+    <div class="cmo-lbl move">The One Move</div>
+    <p class="cmo-body">Reposition Amazon Now as "The 10-Minute Safety Net" — own high-trust, high-value categories: electronics, medicines, baby care, premium personal care. Categories where consumers genuinely hesitate to order from anyone else.</p>
+    <div class="cmo-lbl practice">What This Looks Like in Practice</div>
+    <p class="cmo-body">A national campaign anchored in returns and authenticity: "If it's not what you ordered, send it back in 10 minutes too." Pharmacy-grade cold chain marketing for medicines. Same-day device replacement for Prime members. Drop the grocery-first positioning in metros where Now competes; lead with the categories nobody else can be trusted with.</p>
+    <div class="cmo-lbl works">Why This Works</div>
+    <p class="cmo-body">It side-steps the FDI handicap (these categories already work on marketplace inventory). It uses Prime's 3x frequency data as proof. It turns Amazon's biggest brand asset — trust — into a category Blinkit and Zepto cannot credibly chase.</p>
+    <div class="cmo-quote-line">
+      <p>'They race for tomatoes. We deliver the things that actually matter — in 10 minutes, with the return policy you already trust.'</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SECTION 09 — SOURCES ═══════════════════ -->
+<section class="cs" id="sources" aria-labelledby="sources-h">
+  <div class="sec-divider"><span class="sec-num-label">Section 09</span></div>
+  <div class="sec-index">09</div>
+  <h2 class="ch" id="sources-h">Sources &amp; <em>References</em></h2>
+
+  <ul class="sources-list rv" aria-label="Sources and references">
+    <li>Goldman Sachs — India Quick Commerce coverage (April 2024) — Blinkit valuation (~$13B), market share estimates.</li>
+    <li>Eternal / Zomato investor disclosures — Q4 FY25 GOV (₹9,421 Cr), FY25 revenue (₹4,390 Cr), Q2 FY26 dark store count (1,816), Q3 FY26 adjusted EBITDA (~₹4 Cr).</li>
+    <li>Moneycontrol — Blinkit dark store and order volume reporting (FY25–FY26).</li>
+    <li>Inc42 — Instamart FY25 revenue (₹2,129.6 Cr, +118% YoY); Swiggy quick commerce loss disclosures.</li>
+    <li>Swiggy IPO prospectus and quarterly disclosures (Nov 2024 IPO at ₹390/share; Jan 2026 QIP ₹4,475 Cr).</li>
+    <li>ap7am, UnlistedZone — Zepto FY24/FY25 revenue (₹4,454 Cr → ~₹11,110 Cr), AOV bands (₹430–500), valuation ($7B Oct 2025).</li>
+    <li>RedSeer — Q1 2026 quick commerce share estimates (Blinkit 40%, Zepto 22%, Instamart 26%).</li>
+    <li>Consumer Affairs Ministry / CCPA — May 2025 dark patterns warning against Zepto and 10 other companies; December 2025 ₹7 lakh penalty for drip pricing.</li>
+    <li>Reddit — r/F**kZepto community (launched Jan 2025); ~9,000 members by mid-2025.</li>
+    <li>Raj Shamani "Figuring Out" podcast — Deepinder Goyal four-hour interview, January 2026 (gig worker pay, terminations, insurance disclosures).</li>
+    <li>Rajya Sabha proceedings — Raghav Chadha Zero Hour speech, December 5, 2025 ("the tyranny of 10 minutes").</li>
+    <li>Union Labour Ministry / Mansukh Mandaviya statements — January 2026 voluntary retirement of "10-minute delivery" branding.</li>
+    <li>BusinessToday, Business Standard, IndianRetailer — Flipkart Minutes dark store ramp (~800 Q1 2026, 1,600 target end 2026), Walmart Singapore ₹3,248 Cr infusion, Kabeer Biswas exit Oct 26, 2025.</li>
+    <li>TechCrunch, EconomicTimes — Amazon Now rollout (mid-2025 Bengaluru pilot, 6 cities by April 2026, 350–450 micro-fulfilment centres, $40B India commitment).</li>
+    <li>Amazon FY2026 SEC filings — Prime member 3x frequency uplift on Amazon Now.</li>
+    <li>Samir Kumar (Amazon India Country Manager) — public quote, 2025: "Can we make money doing quick commerce by 2026 or not is something we will have to see. We'll figure it out as we go."</li>
+    <li>Jefferies and UBS quick commerce sector notes (2025–2026) — Amazon Now early-stage assessment.</li>
+    <li>LinkedIn Top Startups India 2025 — Zepto ranked #1 (3rd consecutive year).</li>
+    <li>App Store / Play Store user reviews and Reddit r/IndianStockMarket, r/IndiaQuickCommerce — qualitative user reaction sourcing.</li>
+    <li>Primary research — author's own ordering across all five platforms in Delhi-NCR and Gurgaon, 2024–2026.</li>
+  </ul>
+</section>
+
+</div><!-- end .wrap -->
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="footer-quote rv">"Great research finds the question others didn't think to ask."</div>
+  <p class="footer-note rv">This case study represents an independent competitor analysis of India's quick commerce sector — synthesised from public filings, media reporting, and consumer behaviour analysis.<br><em>"All findings, frameworks, and strategic recommendations are independently developed."</em></p>
+  <div class="footer-copy rv">© 2026 Aadhya Gupta · Quick Commerce · India's 10-Minute War</div>
+  <a href="index.html" class="btn-return rv">← Return to Portfolio</a>
+  <div class="watermark" aria-hidden="true">QUICK<br>COMMERCE</div>
+</footer>
+<div class="footer-nav">
+  <div class="footer-nav-label">More Case Studies</div>
+  <div class="footer-nav-links">
+    <a href="bouncencurls.html" class="footer-nav-link">BounceNCurls →</a>
+    <a href="lenskart.html" class="footer-nav-link">Lenskart →</a>
+  </div>
+</div>
+
+<script>
+/* ── Custom cursor ── */
+const ring = document.getElementById('ccr'), dot = document.getElementById('ccd');
+if (ring && dot) {
+  let mx = window.innerWidth/2, my = window.innerHeight/2, rx = mx, ry = my;
+  function animCursor() {
+    rx += (mx - rx) * .15; ry += (my - ry) * .15;
+    ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    dot.style.transform  = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+    requestAnimationFrame(animCursor);
+  }
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  document.addEventListener('mouseover', e => {
+    document.body.classList.toggle('hov', !!e.target.closest('a,button'));
+  });
+  animCursor();
+}
+
+/* ── Scroll progress bar ── */
+const sp = document.getElementById('sp');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  if (sp) sp.style.width = (h > 0 ? window.scrollY / h * 100 : 0) + '%';
+}, { passive: true });
+
+/* ── Back to top ── */
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => btt && btt.classList.toggle('show', window.scrollY > 400), { passive: true });
+if (btt) btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ── Reveal on scroll ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+  });
+}, { threshold: .06 });
+document.querySelectorAll('.rv').forEach(el => {
+  el.classList.add('will-animate');
+  io.observe(el);
+});
+
+/* ── Bar chart animation ── */
+document.querySelectorAll('.chart-box').forEach(box => {
+  const fills = box.querySelectorAll('.bar-fill');
+  const revBars = box.querySelectorAll('.rev-bar');
+  const fillTargets = Array.from(fills).map(f => f.style.width || '0%');
+  const revTargets  = Array.from(revBars).map(b => b.style.width || '0%');
+  fills.forEach(f => { f.style.width = '0%'; });
+  revBars.forEach(b => { b.style.width = '0%'; b.style.transition = 'width 1s ease, filter .18s'; });
+  const cio = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        fills.forEach((f, i) => { setTimeout(() => { f.style.width = fillTargets[i]; }, i * 80); });
+        revBars.forEach((b, i) => { setTimeout(() => { b.style.width = revTargets[i]; }, i * 100); });
+        cio.unobserve(box);
+      }
+    });
+  }, { threshold: .3 });
+  cio.observe(box);
+});
+const navAs = document.querySelectorAll('.nav-links a');
+const secIds = ['brief','stage','map','brands','turns','war','insights','cmo','sources'];
+const sio = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      navAs.forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + en.target.id));
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+secIds.forEach(id => { const el = document.getElementById(id); if (el) sio.observe(el); });
+
+/* ── Hamburger menu ── */
+const ham = document.getElementById('ham'), mn = document.getElementById('mn'), mc = document.getElementById('mc');
+if (ham && mn && mc) {
+  ham.addEventListener('click', () => mn.style.display = 'flex');
+  mc.addEventListener('click',  () => mn.style.display = 'none');
+  document.querySelectorAll('.mnl').forEach(l => l.addEventListener('click', () => mn.style.display = 'none'));
+  ham.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mn.style.display = 'flex'; } });
+}
+</script>
+</body>
+</html>

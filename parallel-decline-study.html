@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CASE FILE · The Anatomy of a Brand Decline · Aadhya Gupta</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2VNTCZ6E1R"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-2VNTCZ6E1R');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Special+Elite&family=Courier+Prime:wght@400;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --desk:#2E2118;--desk2:#241A13;--desk-edge:#170F0A;
+  --folder:#C9A897;--folder-shadow:#A9846F;--folder-edge:#B9967F;
+  --label:#F7F4EE;--label-edge:#DCD6C8;
+  --ink:#1C1815;--ink-soft:#4A4038;
+  --red:#8B3A2E;--red-soft:rgba(139,58,46,.12);--red-bright:#E2543A;
+  --blue:#16262E;--blue-soft:rgba(22,38,46,.1);
+  --nokia:#0B5FFF;--bbq:#C2780C;
+  --paper-note:#E8DFC8;
+  --fd:'Zilla Slab',serif;--fb:'Source Serif 4',serif;--fm:'Special Elite',monospace;--fh:'Caveat',cursive;--fcp:'Courier Prime',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--desk);color:var(--label);overflow-x:hidden;line-height:1.7}
+a{color:inherit;text-decoration:none}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    repeating-linear-gradient(178deg,rgba(0,0,0,.05) 0 2px,transparent 2px 6px),
+    radial-gradient(ellipse at 50% -10%,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 85%);
+}
+#sp{position:fixed;top:0;left:0;height:2px;background:var(--red);z-index:999}
+nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:40;display:flex;
+  align-items:center;gap:1.3rem;padding:.65rem 1.7rem;background:rgba(23,15,10,.92);
+  backdrop-filter:blur(12px);border-radius:999px;border:1px solid rgba(201,168,151,.2);
+  box-shadow:0 16px 34px -10px rgba(0,0,0,.65);max-width:92vw;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.ag-tile{position:fixed;top:1rem;left:1.5rem;z-index:41;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(23,15,10,.92);backdrop-filter:blur(12px);border:1px solid rgba(201,168,151,.2);box-shadow:0 16px 34px -10px rgba(0,0,0,.65)}
+.ag-tile span{font-family:var(--fd);font-size:.8rem;font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,var(--folder),var(--red-bright));-webkit-background-clip:text;background-clip:text;color:transparent}
+.nt{font-family:var(--fm);font-size:.72rem;letter-spacing:.08em;color:var(--folder)}
+.nl{margin-left:auto;display:flex;gap:1.3rem;flex-wrap:nowrap;white-space:nowrap}
+.nl a{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#8a7a6c;transition:color .2s}
+.nl a:hover{color:var(--folder)}
+@media(max-width:820px){.nl{display:none}}
+
+.hero{min-height:100vh;position:relative;z-index:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:120px 1.5rem 4rem;
+  background:radial-gradient(ellipse 700px 500px at var(--mx,50%) var(--my,38%),rgba(201,168,151,.18) 0%,transparent 70%);
+  transition:background .15s ease-out;cursor:default}
+.case-tag{font-family:var(--fm);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red-bright);border:1.5px solid var(--red-bright);background:rgba(226,84,58,.14);
+  padding:.4rem 1rem;border-radius:2px;margin-bottom:1.6rem}
+.hh{font-family:var(--fd);font-weight:700;font-size:clamp(38px,7vw,84px);letter-spacing:-.01em;
+  line-height:1.02;color:var(--label);max-width:900px}
+.hsub{font-family:var(--fb);font-style:italic;font-size:clamp(15px,2vw,19px);color:#b8a898;
+  max-width:560px;margin:1.2rem 0 2.2rem}
+.sign-line{font-family:var(--fm);font-size:.66rem;letter-spacing:.08em;color:#7a6a5c;
+  border-top:1px solid rgba(201,168,151,.25);padding-top:.8rem;max-width:340px}
+.sign-line span{color:var(--folder)}
+.sign-line a{color:var(--folder);border-bottom:1px dotted currentColor;transition:color .2s}
+.sign-line a.nk:hover{color:var(--nokia);border-color:var(--nokia)}
+.sign-line a.bn:hover{color:var(--bbq);border-color:var(--bbq)}
+.harr{margin-top:2.4rem;font-size:1.2rem;color:var(--folder);animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+#tracker{position:fixed;right:1.4rem;bottom:1.4rem;z-index:60;font-family:var(--fm);
+  font-size:.6rem;letter-spacing:.08em;color:var(--folder);background:rgba(23,15,10,.9);
+  border:1px solid rgba(201,168,151,.3);padding:.5rem .8rem;border-radius:2px}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem 6rem;position:relative;z-index:1}
+.filing{padding:1.6rem 0;scroll-margin-top:90px}
+#hook{scroll-margin-top:0}
+.case-no{font-family:var(--fm);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--red-bright);margin-bottom:.4rem}
+
+/* Exhibit / memo unit: fully hidden, no animation, until its sentinel fires. Then an
+   instant appearance with a brief decorative flash, content never fades or staggers. */
+.unit.pending{opacity:0;visibility:hidden}
+@keyframes evidenceFlash{
+  0%{box-shadow:0 0 0 0 rgba(226,84,58,.9)}
+  100%{box-shadow:0 0 0 60px rgba(226,84,58,0)}
+}
+.unit.revealed{opacity:1;visibility:visible;animation:evidenceFlash .85s ease-out}
+
+.unit{position:relative;margin:2.6rem 0}
+.tab{display:inline-flex;align-items:baseline;gap:.4rem;background:var(--folder);color:var(--ink);
+  padding:.4rem 1rem .55rem;border-radius:4px 4px 0 0;position:relative;left:1.4rem;
+  box-shadow:0 -1px 0 rgba(0,0,0,.05) inset}
+.tab .exno{font-family:var(--fh);font-weight:700;font-size:1.5rem;color:var(--red);line-height:1}
+.tab .exlabel{font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.folder-body{background:var(--folder);border-radius:2px 10px 10px 10px;padding:1.8rem 1.8rem 1.6rem;
+  box-shadow:0 30px 50px -18px rgba(0,0,0,.7),0 10px 18px -10px rgba(0,0,0,.5),0 2px 0 var(--folder-shadow) inset;
+  color:var(--ink);animation:cardFloat 6s ease-in-out infinite}
+@keyframes cardFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+.label{background:var(--label);border:1px solid var(--label-edge);border-radius:3px;
+  padding:.9rem 1.1rem;margin-bottom:1.3rem;box-shadow:0 2px 5px rgba(0,0,0,.12)}
+.label-eyebrow{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--red);margin-bottom:.25rem}
+.label-eyebrow.nokia{color:var(--nokia)}
+.label-eyebrow.bbq{color:var(--bbq)}
+.label-title{font-family:var(--fd);font-weight:700;font-size:clamp(19px,3vw,26px);color:var(--ink);
+  letter-spacing:-.01em}
+.folder-body p{font-size:.95rem;color:var(--ink-soft);margin-bottom:1rem}
+.folder-body p:last-child{margin-bottom:0}
+.evid{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fcp);font-size:.65rem;
+  font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);border:1.5px solid var(--blue);
+  background:var(--blue-soft);padding:.28rem .65rem;border-radius:2px;margin:.3rem .3rem .3rem 0}
+.note{background:var(--paper-note);border:1px solid #cbbf9e;border-radius:3px;
+  padding:1.2rem 1.3rem;margin-top:1.4rem;transform:rotate(-1.1deg);position:relative;
+  box-shadow:0 10px 20px -10px rgba(0,0,0,.4);max-width:94%}
+.note::before{content:'📎';position:absolute;top:-14px;left:18px;font-size:1.3rem;transform:rotate(18deg)}
+.note-label{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--red);margin-bottom:.45rem}
+.note p{font-family:var(--fcp);font-size:.85rem;color:var(--ink);line-height:1.85;margin-bottom:.7rem;letter-spacing:.005em}
+.note p:last-child{margin-bottom:0}
+.divider{width:60px;height:1px;background:rgba(201,168,151,.3);margin:1.2rem auto}
+.sent{height:1px}
+.stamp-final{font-family:var(--fm);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--red-bright);border:1.5px solid var(--red-bright);display:inline-block;padding:.5rem 1.2rem;
+  border-radius:2px;margin-top:1.6rem}
+</style>
+</head>
+<body>
+
+<div id="sp"></div>
+<div class="ag-tile"><span>AG</span></div>
+
+<nav>
+  <a href="index.html" style="font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--folder);border-bottom:1px dotted currentColor;transition:color .2s">← Portfolio</a>
+  <span class="nt">CASE FILE</span>
+  <div class="nl">
+    <a href="#hook">Assigned</a>
+    <a href="#thesis">Theory</a>
+    <a href="#sec03">Nokia</a>
+    <a href="#sec08">Barbeque Nation</a>
+    <a href="#sec13">Cross-File</a>
+    <a href="#sec14">Ruling</a>
+  </div>
+</nav>
+<div id="tracker">EXHIBITS REVIEWED · 00 / 14</div>
+
+<section class="hero" id="hook">
+  <div class="case-tag">Case File: Assigned for Review</div>
+  <h1 class="hh">The Anatomy of a Brand Decline</h1>
+  <p class="hsub">Two companies. Two industries. Fourteen years apart. Neither one refused to act. Both defended the wrong thing while it mattered.</p>
+  <div class="sign-line">Reviewing analyst: <span>—</span><br/>Case files enclosed: <a class="nk" href="#sec03">NK&#8209;2011</a> · <a class="bn" href="#sec08">BN&#8209;2025</a></div>
+  <div class="harr">↓</div>
+  <div id="sentinel01" class="sent"></div>
+</section>
+
+<div class="wrap">
+
+  <!-- THESIS -->
+  <div class="filing rv" id="thesis">
+    <div class="unit pending" id="unit02">
+      <span class="tab"><span class="exno">TH</span><span class="exlabel">Working Theory</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow">Case Notes</div>
+          <div class="label-title">The Working Theory</div>
+        </div>
+        <p>Every brand that dominates a market builds something worth defending. A moat: a durable advantage that keeps competitors out. Nokia had one. So did Barbeque Nation. The moat itself was never the problem. The problem started the moment each company stopped treating the moat as a means and started treating it as the point.</p>
+        <p>This isn't a new observation in the abstract. Clayton Christensen described a version of it decades ago in <em>The Innovator's Dilemma</em>: successful companies fail not from neglect but from doing exactly what made them successful, for too long, after the market that rewarded it has moved on. <span class="evid">Evidence: Business Strategy Literature</span></p>
+        <p>Nokia's moat was never Symbian alone. It was a wider system: carrier partnerships, vendor financing and global manufacturing, and alliance-based innovation networks. By the late 2000s, Nokia's handset R&D budget ran a third higher than Samsung's, nearly double RIM's, and more than double Motorola's. <span class="evid">Evidence: Business History Journal</span></p>
+        <p>Barbeque Nation's moat was never really the food. Its own managing director credited its growth to being first in India to bring do-it-yourself, tableside live grilling into casual dining. At IPO, its average table sat four to five people, and lunch alone made up around 45% of revenue, the signature of planned group occasions rather than passing footfall. <span class="evid">Evidence: Company Statements, IPO Filing</span></p>
+        <div class="note">
+          <div class="note-label">Analyst's Note</div>
+          <p>Both companies stayed busy the entire time. Neither one, from the inside, looked stagnant. That's what makes this pattern dangerous. Stagnation that looks like stagnation gets fixed. Stagnation that looks like activity gets funded for years past the point it should have been questioned.</p>
+        </div>
+        <div id="sentinel02" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- NOKIA EXHIBIT 01 -->
+  <div class="filing rv" id="sec03">
+    <div class="case-no">Case No. NK&#8209;2011 · Filed under Nokia</div>
+    <div class="unit pending" id="unit03">
+      <span class="tab"><span class="exno">01</span><span class="exlabel">Exhibit</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow nokia">Nokia</div>
+          <div class="label-title">Evidence of Strength</div>
+        </div>
+        <p>Nokia wasn't always a phone company. For most of the twentieth century it made rubber boots, toilet paper, tires, cables, and even televisions. Three separate Finnish industrial firms merged into one conglomerate in 1967. The bet on mobile telephony came later, in 1992, when Jorma Ollila took over as CEO and sold off everything the company had built for a century to stake its future on GSM. <span class="evid">Evidence: Company History</span></p>
+        <p>The moat that followed had three parts. Reach: cheap, durable handsets built for India, Africa, and Latin America years before competitors bothered. Manufacturing discipline: in March 2000, a fire at a chip supplier's plant cut off a component both Nokia and Ericsson depended on. Nokia rerouted production within days. Ericsson didn't, and the shortage helped push it out of handsets entirely. <span class="evid">Evidence: Kellogg Case Study</span></p>
+        <p>And Symbian: by the mid-2000s, running north of 60% of the world's smartphones, with Nokia commanding roughly two-fifths of the global handset market overall. <span class="evid">Evidence: Business History Journal</span></p>
+        <div class="note">
+          <div class="note-label">Analyst's Note</div>
+          <p>This wasn't a company that got lucky with one good product cycle. Reach, discipline, and platform control reinforced each other. Carriers trusted Nokia on supply, customers trusted the hardware, and developers built for Symbian because that's where the users already were. None of it was fragile in the way it looks once you know how the story ends.</p>
+        </div>
+        <div id="sentinel03" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- NOKIA EXHIBIT 02 -->
+  <div class="filing rv" id="sec04">
+    <div class="unit pending" id="unit04">
+      <span class="tab"><span class="exno">02</span><span class="exlabel">Exhibit</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow nokia">Nokia</div>
+          <div class="label-title">First Signs of Trouble</div>
+        </div>
+        <p>June 2007: the iPhone launches. CEO Olli-Pekka Kallasvuo tells Reuters that Apple has done the industry a favor. Nokia's own engineers went further. An internal assessment within weeks flagged the touch interface as an urgent threat, then forecast the iPhone would capture about 1% of the market the following year. <span class="evid">Evidence: Reuters, 2007</span> <span class="evid">Evidence: Internal Archive</span></p>
+        <p>2008: Google releases Android. Nokia's global device share runs 39% that year, drops to 36% in 2009, and falls to 29% in 2010 (the year Stephen Elop is brought in as CEO). It keeps falling to 23% the year after. <span class="evid">Evidence: Business History Journal</span></p>
+        <div class="note">
+          <div class="note-label">Analyst's Note</div>
+          <p>Nokia wasn't blind. It was precise about the danger and wrong about the scale, by an order of magnitude. That gap is a more interesting failure than simple denial. The company was never short on information. The problem was never that nobody saw it coming.</p>
+        </div>
+        <div id="sentinel04" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- NOKIA EXHIBIT 03 -->
+  <div class="filing rv" id="sec05">
+    <div class="unit pending" id="unit05">
+      <span class="tab"><span class="exno">03</span><span class="exlabel">Exhibit</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow nokia">Nokia</div>
+          <div class="label-title">The Decision Under Scrutiny</div>
+        </div>
+        <p>By late 2010, Nokia's board brought in an outsider to fix things: Stephen Elop, poached from Microsoft. In February 2011, an internal memo went out under his name comparing Nokia to a man on a burning oil platform, choosing between fire and freezing water. It leaked within hours. <span class="evid">Evidence: Leaked Internal Memo, 2011</span></p>
+        <p>Nokia evaluated three real paths that winter: keep building MeeGo in-house, join Android, or partner with Microsoft. Elop initially preferred the internal option, but MeeGo was judged too late and too disorganized to compete in time. Android was rejected too, an internal analysis (Project Sea Eagle) worried it would strip Nokia of its differentiation the way Android commoditized every other handset maker. <span class="evid">Evidence: Strategic Management Journal, 2024</span></p>
+        <p>Windows Phone let Nokia negotiate exclusive terms and roughly a billion dollars a year in support payments. On February 11, 2011, Elop announced it publicly, and killed Symbian and MeeGo the same day, nine months before the first Lumia shipped. <span class="evid">Evidence: Company Announcement, Feb 2011</span></p>
+        <div class="note">
+          <div class="note-label">Analyst's Note</div>
+          <p>Nokia had a real chance to join the exact ecosystem shift it had just diagnosed, and turned it down specifically because doing so would have cost it its differentiation. It picked the option that let it keep behaving like a company with a proprietary platform, even though its own memo said proprietary platforms weren't how this war got won anymore.</p>
+        </div>
+        <div id="sentinel05" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- NOKIA EXHIBIT 04 -->
+  <div class="filing rv" id="sec06">
+    <div class="unit pending" id="unit06">
+      <span class="tab"><span class="exno">04</span><span class="exlabel">Exhibit</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow nokia">Nokia</div>
+          <div class="label-title">Damage Report</div>
+        </div>
+        <p>Nokia's overall device share slid from 29% in 2010 to 23% in 2011. In the twelve months after the Windows Phone announcement, smartphone unit sales fell by more than half and market share dropped more than fifteen points. By end-2012, smartphone share was near 2.9%, down from roughly half the world's smartphones five years earlier. <span class="evid">Evidence: Business History Journal</span></p>
+        <p>Nokia posted a €1.2 billion net loss for 2011, including a €1.07 billion loss in Q4 alone. It posted a further €929 million loss in Q1 2012, and was still posting losses in Q1 2013. Its share price fell more than 60% over the prior two years, per its own results commentary. <span class="evid">Evidence: Reuters, 2011&ndash;2012</span></p>
+        <p>In 2013, Microsoft bought Nokia's handset business for $7.2 billion, closing in early 2014. <span class="evid">Evidence: Acquisition Filing</span></p>
+        <div class="note">
+          <div class="note-label">Analyst's Note</div>
+          <p>The actual cost wasn't the sale itself. It was everything that made the sale necessary: years of share erosion the company saw coming and diagnosed correctly, followed by a platform decision that solved the wrong problem and then executed even that solution in the wrong order.</p>
+        </div>
+        <div id="sentinel06" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- NOKIA EXHIBIT 05 -->
+  <div class="filing rv" id="sec07">
+    <div class="unit pending" id="unit07">
+      <span class="tab"><span class="exno">05</span><span class="exlabel">Exhibit</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow nokia">Nokia</div>
+          <div class="label-title">Ruling on Nokia</div>
+        </div>
+        <p>A company builds a real, structural advantage. The market that advantage was built for changes shape. The company notices, accurately and early. It responds, and the response is not passive, it evaluates alternatives, negotiates deals, spends real money.</p>
+        <p>And still it fails, because every option gets filtered through the same question: how do we protect what made us different. Nokia's leadership, weighing Android against Windows Phone, worried specifically about ending up as one vendor among many inside a field already filling with low-cost manufacturers. Windows Phone offered the opposite: a partner willing to build the platform around Nokia specifically.</p>
+        <div class="note">
+          <div class="note-label">Ruling</div>
+          <p>Nokia didn't fail to change. It changed the vehicle, Symbian for Windows Phone, while defending the exact same underlying logic both vehicles were built to serve: that being the exception was still the thing worth protecting above all else. The moat had stopped being a moat by 2007. Nokia spent the next four years, and the last of its independence, defending it anyway.</p>
+        </div>
+        <div id="sentinel07" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BBQ EXHIBIT 06 -->
+  <div class="filing rv" id="sec08">
+    <div class="case-no">Case No. BN&#8209;2025 · Filed under Barbeque Nation</div>
+    <div class="unit pending" id="unit08">
+      <span class="tab"><span class="exno">06</span><span class="exlabel">Exhibit</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow bbq">Barbeque Nation</div>
+          <div class="label-title">Evidence of Strength</div>
+        </div>
+        <p>The first Barbeque Nation restaurant opened in 2006, launched by Sayaji Hotels Limited. The format: a grill built into every table, paired with an unlimited buffet, for one fixed price. The company's own managing director credited it with shaping the casual dining category itself. <span class="evid">Evidence: Company Statements</span></p>
+        <p>Average table size at IPO ran four to five people, well above typical casual dining, and lunch alone made up around 45% of revenue, pointing to planned group occasions rather than passing footfall. <span class="evid">Evidence: IPO Filing</span></p>
+        <p>As of December 31, 2020, months before the April 2021 listing, the company ran 164 restaurants: 147 under the core brand across 77 Indian cities, plus 6 international, against only 11 under its smaller Italian brand, Toscano. <span class="evid">Evidence: DRHP, 2021</span></p>
+        <div class="note">
+          <div class="note-label">Analyst's Note</div>
+          <p>By outlet count alone, the company that went public in 2021 was still overwhelmingly the same live-grill, unlimited-buffet business it had been since 2006, with the non-core brands still small beside it.</p>
+        </div>
+        <div id="sentinel08" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BBQ EXHIBIT 07 -->
+  <div class="filing rv" id="sec09">
+    <div class="unit pending" id="unit09">
+      <span class="tab"><span class="exno">07</span><span class="exlabel">Exhibit</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow bbq">Barbeque Nation</div>
+          <div class="label-title">First Signs of Trouble</div>
+        </div>
+        <p>By the mid-to-late 2010s, Swiggy and Zomato turned home delivery from a convenience into a habit. Cloud kitchens multiplied, proving a restaurant didn't need a dining room to reach a customer. <span class="evid">Evidence: Industry Reporting</span></p>
+        <p>A meaningful share of Barbeque Nation's restaurants sit in south Indian cities with heavy IT-sector footfall, and by the mid-2020s those companies were reassessing headcount and office attendance in the AI era. <span class="evid">Evidence: The Ken, 2025</span></p>
+        <p>Jubilant Foodworks, the Domino's operator, had a weak FY24 before recovering into mid-to-high single-digit growth in FY25 and FY26. Barbeque Nation's core India business, by contrast, saw same-store sales fall 9%, then another 5%, with no comparable turnaround. <span class="evid">Evidence: Business Standard, 2024&ndash;2025</span></p>
+        <div class="note">
+          <div class="note-label">Analyst's Note</div>
+          <p>The company wasn't operating in the dark. Delivery, cloud kitchens, and the office-traffic question were all plainly visible well before they showed up in Barbeque Nation's own earnings commentary.</p>
+        </div>
+        <div id="sentinel09" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BBQ EXHIBIT 08 -->
+  <div class="filing rv" id="sec10">
+    <div class="unit pending" id="unit10">
+      <span class="tab"><span class="exno">08</span><span class="exlabel">Exhibit</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow bbq">Barbeque Nation</div>
+          <div class="label-title">The Decision Under Scrutiny</div>
+        </div>
+        <p>The company kept opening restaurants under the core format, growing from 164 outlets in FY20 to 185 by FY22, and past 190 by FY25. Alongside that, it built Toscano, UBQ, Dum Safar, and in February 2025 moved into ice cream through a stake in Willow Gourmet. <span class="evid">Evidence: Company Results</span></p>
+        <p>Management's own language separated the tasks: drive same-store sales in India dine-in, scale Toscano and international, grow UBQ and Dum Safar separately, the core business losing ground got the same generic instruction any struggling division gets. <span class="evid">Evidence: Earnings Call Transcript</span></p>
+        <p>In October 2025, the listed company renamed itself from Barbeque Nation Hospitality to United Foodbrands, effective October 13, per the exchange's own filing. <span class="evid">Evidence: NSE Circular, Oct 2025</span></p>
+        <div class="note">
+          <div class="note-label">Analyst's Note</div>
+          <p>There is no clear public evidence of a fundamental rethink of the buffet format itself. The company diversified around the core more visibly than it changed the core.</p>
+        </div>
+        <div id="sentinel10" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BBQ EXHIBIT 09 -->
+  <div class="filing rv" id="sec11">
+    <div class="unit pending" id="unit11">
+      <span class="tab"><span class="exno">09</span><span class="exlabel">Exhibit</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow bbq">Barbeque Nation</div>
+          <div class="label-title">Damage Report</div>
+        </div>
+        <p>In FY25, India dine-in still accounted for about 80% of revenue, on a topline of roughly ₹1,230 crore. Same-store sales fell 9% in one quarter, then another 5% the following year. <span class="evid">Evidence: The Ken, 2025</span></p>
+        <p>Net loss for FY25 came to ₹27 crore, more than double FY24's ₹11 crore. Q4 FY25 alone accounted for ₹20.6 crore of that, with revenue down 12% sequentially and delivery growing just 3% year on year. <span class="evid">Evidence: Storyboard18, 2025</span></p>
+        <p>Market capitalization fell from roughly ₹6,400 crore shortly after the 2021 listing to about ₹830 crore by late 2025, the stock down about 50% in 2025 alone. Analysts on the earnings call asked directly whether the business model was sustainable. <span class="evid">Evidence: The Ken, 2025</span></p>
+        <div class="note">
+          <div class="note-label">Analyst's Note</div>
+          <p>What makes this different from Nokia isn't the scale, it's the pacing. Nokia's decline was compressed into a few violent years after one identifiable decision. Barbeque Nation's has been slower, quieter, and is still running as this is being written.</p>
+        </div>
+        <div id="sentinel11" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BBQ EXHIBIT 10 -->
+  <div class="filing rv" id="sec12">
+    <div class="unit pending" id="unit12">
+      <span class="tab"><span class="exno">10</span><span class="exlabel">Exhibit</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow bbq">Barbeque Nation</div>
+          <div class="label-title">Ruling on Barbeque Nation</div>
+        </div>
+        <p>A company builds a real structural advantage: a format specific enough that it becomes the default answer to a question customers keep asking, where do we go to celebrate. The market changes shape from four directions at once, delivery, cloud kitchens, office culture, discretionary squeeze. The company responds with real activity, more restaurants, more brands, more categories.</p>
+        <p>And still the core keeps eroding, because none of that activity touches the buffet itself, the pricing, the occasion-only framing. Expansion is comfortable. It produces store-count numbers and answers for earnings calls. Rethinking the format that built the company's identity is slower and far less reassuring.</p>
+        <div class="note">
+          <div class="note-label">Ruling</div>
+          <p>The rename in October 2025 confirms the corporate desire to look broader than one flagship. The moat had stopped growing at the same pace as the market changed around it well before 2024. Barbeque Nation spent the years in between adding everything except the one renovation the moat itself needed.</p>
+        </div>
+        <div id="sentinel12" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONVERGENCE -->
+  <div class="filing rv" id="sec13">
+    <div class="unit pending" id="unit13">
+      <span class="tab"><span class="exno">X-R</span><span class="exlabel">Cross-File</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow">Cross-Reference</div>
+          <div class="label-title">Cross-File Analysis</div>
+        </div>
+        <p>Put the two files next to each other and the differences stop being the interesting part. Nokia built its moat over decades. Barbeque Nation built its much faster, from its first restaurant in 2006 to a public listing in 2021. Both shapes were similar: a specific, hard-to-copy answer to a specific need, reinforced until it looked less like a product and more like infrastructure.</p>
+        <p>Both companies noticed the ground shifting before the story was over. Nokia's engineers flagged the iPhone within weeks. Barbeque Nation's leadership was tracking same-store sales pressure years before the rename. Neither story is one of a company caught flat-footed.</p>
+        <p>Nokia's activity went into changing platforms while preserving the same underlying logic, differentiation as the thing worth protecting. Barbeque Nation's activity went into diversification while the one asset losing relevance, the buffet itself, ran on the same assumptions it always had. In both cases, the company solved for continuity of identity rather than continuity of relevance.</p>
+        <div class="note">
+          <div class="note-label">Analyst's Note</div>
+          <p>The psychology underneath both decisions is the same: attachment to the proof of past success, dressed up as strategic caution. The formula is visible and easy to defend in a quarterly deck. The underlying need is harder to point to, and admitting it has moved means admitting the company's most celebrated achievement may now need redesign.</p>
+        </div>
+        <div id="sentinel13" class="sent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CLOSING / RULING -->
+  <div class="filing rv" id="sec14">
+    <div class="unit pending" id="unit14">
+      <span class="tab"><span class="exno">FIN</span><span class="exlabel">Ruling</span></span>
+      <div class="folder-body">
+        <div class="label">
+          <div class="label-eyebrow">Final</div>
+          <div class="label-title">The Ruling</div>
+        </div>
+        <p>Every durable business eventually builds something worth defending. That is not the mistake. The mistake is losing the ability to tell the difference between the advantage and the form it currently wears. Nokia's advantage was trust at scale, and for a decade that trust happened to live inside Symbian. Barbeque Nation's advantage was being the default answer to a celebration, and for more than a decade that answer happened to look like a live grill and an unlimited buffet.</p>
+        <p>Name the thing your company is famous for. Ask what job that thing is actually doing for the customer, stripped of the specific form it currently takes. Then ask honestly whether that job has changed, or whether only the fashionable way of doing it has changed. Defending the wrong one is how a genuine moat quietly becomes a museum exhibit: still impressive, still original, and no longer defending anything.</p>
+        <div class="note">
+          <div class="note-label">Closing Argument</div>
+          <p>The vehicle got you here. It was never the destination. Not a verdict on either company. A pattern that applies to both, and to whoever reads this next.</p>
+        </div>
+        <div style="text-align:center"><span class="stamp-final">Pattern Confirmed</span></div>
+        <div style="text-align:center;margin-top:2.4rem;padding-top:1.8rem;border-top:1px solid rgba(28,24,21,.15)">
+          <a href="index.html" style="display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--folder-shadow);padding:.65rem 1.5rem;border-radius:2px;transition:all .2s">← Close File — Return to Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+if(location.hash){history.replaceState(null,'',location.pathname+location.search);window.scrollTo(0,0)}
+const heroEl=document.getElementById('hook');
+if(heroEl){
+  heroEl.addEventListener('mousemove',e=>{
+    const r=heroEl.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width*100).toFixed(1);
+    const y=((e.clientY-r.top)/r.height*100).toFixed(1);
+    heroEl.style.setProperty('--mx',x+'%');
+    heroEl.style.setProperty('--my',y+'%');
+  },{passive:true});
+}
+const sp=document.getElementById('sp');
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;sp.style.width=(h>0?window.scrollY/h*100:0)+'%'},{passive:true});
+
+const io=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+const tracker=document.getElementById('tracker');
+const filings=document.querySelectorAll('.filing');
+const tio=new IntersectionObserver(()=>{
+  let count=0;
+  document.querySelectorAll('.filing.in').forEach(()=>count++);
+  tracker.textContent='EXHIBITS REVIEWED · '+String(count).padStart(2,'0')+' / 14';
+},{threshold:.3});
+filings.forEach(el=>tio.observe(el));
+
+/* Chained reveal: each sentinel, placed at the true end of the previous unit's
+   content, triggers the next unit's instant appearance (with its brief flash cue). */
+const chain=[
+  ['sentinel01','unit02'],['sentinel02','unit03'],['sentinel03','unit04'],
+  ['sentinel04','unit05'],['sentinel05','unit06'],['sentinel06','unit07'],
+  ['sentinel07','unit08'],['sentinel08','unit09'],['sentinel09','unit10'],
+  ['sentinel10','unit11'],['sentinel11','unit12'],['sentinel12','unit13'],
+  ['sentinel13','unit14']
+];
+chain.forEach(([sId,uId])=>{
+  const s=document.getElementById(sId), u=document.getElementById(uId);
+  if(!s||!u) return;
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        u.classList.add('revealed');
+        u.classList.remove('pending');
+      }else if(en.boundingClientRect.top>0){
+        /* only re-hide when scrolling back UP past the sentinel, not when the
+           sentinel has already scrolled above the viewport on the way down */
+        u.classList.add('pending');
+        u.classList.remove('revealed');
+      }
+    });
+  },{threshold:0});
+  obs.observe(s);
+});
+</script>
+</body>
+</html>
